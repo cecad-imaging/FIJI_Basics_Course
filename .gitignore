@@ -1,0 +1,10 @@
+.kile/
+*.log
+*.blg
+*.bbl
+*.toc
+*.aux
+*.out
+*.gz
+*.gz(busy)
+*~
