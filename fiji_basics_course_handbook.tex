@@ -1,0 +1,83 @@
+\documentclass[12pt,twoside, parskip=half, headsepline=on, chapterprefix=true, draft=off]{scrbook}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+\usepackage[breakable,skins]{tcolorbox}
+
+\renewcaptionname{english}{\chaptername}{Module}
+
+\definecolor{shadecolor}{gray}{0.5}
+
+%\usepackage{hyperref}
+%\hypersetup{colorlinks=true, urlcolor=[rgb]{0.25,0.41,0.88}, linkcolor=[rgb]{0.25,0.41,0.88}, pdftitle=Course, pdfauthor=Peter Zentis, pdfsubject=, pdfkeywords=}
+\usepackage{scrlayer-scrpage}
+
+\ihead{CECAD -- IIAM} 
+\chead{} 
+\ohead[]{\headmark} 
+\renewcommand*{\chapterpagestyle}{scrheadings}
+\pagestyle{scrheadings}
+
+\newcounter{taskcounter}
+\newenvironment{taskbox}[1]{%
+	\begin{tcolorbox}[enhanced,breakable,colframe=red!75!black]%
+	\begin{addmargin*}[1em]{1em}%
+			\refstepcounter{taskcounter}%
+			\vspace{0.5cm}\textbf{Exercise} \textbf{\thechapter.\arabic{taskcounter}:} #1%
+			\\\rule[0.9em]{\linewidth}{1pt}%
+}{%
+	\end{addmargin*}%
+	\end{tcolorbox}%
+}
+
+\usepackage{natbib}
+
+
+%% Start Document
+
+\begin{document}
+
+% title 
+\title{An Introduction to Image Analysis in Microscopy with ImageJ/FIJI}
+\subtitle{CECAD/CMMC Imaging Facility Course, v1.4} 
+\author{Nikolay Kladt \and Peter Zentis \and Florian Küster}
+\date{\today}
+\publishers{Imaging Facilities\\Cluster of Excellence -- Cellular Stress Responses in Aging-Associated Diseases\\and\\Center for Molecular Medicine Cologne\\University of Cologne}
+
+\maketitle
+
+% Some general introductions, course specific
+\include{preface}
+
+\tableofcontents
+
+% Module 1: Publishing microscopy data (The Basics)
+\include{mod1/module1}
+
+% Module 2: Measuring intensities
+\setcounter{taskcounter}{0}
+\include{mod2/module2}
+
+% Module 3: Working with objects
+\setcounter{taskcounter}{0}
+\include{mod3/module3}
+
+
+\bibliographystyle{plainnat}
+\bibliography{coursebib}
+
+
+\end{document}
+
+
+
+
+
