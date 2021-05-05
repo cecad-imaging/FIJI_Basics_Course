@@ -1,3 +1,19 @@
+
+
+
+---
+title: Exercises from An Introduction to Image Analysis in Microscopy with ImageJ/FIJI
+toc: true
+include-before: |
+ \begin{center}\date{\today}\end{center}
+---
+
+
+\pagebreak
+\newpage
+
+
+
 # Part 1
 ## Using Bioformats
 Let's import a microscope specific file format into
@@ -19,7 +35,10 @@ Fiji.
     metadata information. Scroll through the information and find the
     Dimension Length, Number of Elements and Unit. Use these values to
     calculate the pixel size.
-### tags: exercise bioformats-1
+
+**Tags:** exercise bioformats-1
+
+
 
 ## Using OMERO
 Now let’s try to utilize OMERO and load the image file sted-confocal.lif into the Omero database:
@@ -34,7 +53,12 @@ Now let’s try to utilize OMERO and load the image file sted-confocal.lif into 
 5. Close the insight client, start the webclient (i.e.  open https://omero.cecad.uni-koeln.de in your favorite webbrowser), find your image and compare the handling of insight and webclient.
 
 6. Now try to load the image from Omero in Fiji. If the required plugin is already installed, you will find the entry OMERO in the Plugins Menu.Select Connect to OMERO. Login again and choose your image in the Omero window.
-### tags: exercise omero-1
+
+**Tags:** exercise omero-1
+
+\pagebreak
+\newpage
+
 
 ## Scale Bars
 Let's explore one thing you usually have to include in your
@@ -62,7 +86,8 @@ microscopy data: a scale bar that indicates the size of each pixel.
 
 5.  Now open the file using Omero.insight again. Double click the image
     to open a viewer window. Use the Display menu to add and adjust a scalebar. Export the image (toolbar icon with image and red arrow). 
-### tags: exercise scalebar-1
+
+**Tags:** exercise scalebar-1
 
 ## Brightness Adjustments
 
@@ -86,9 +111,13 @@ microscopy data: a scale bar that indicates the size of each pixel.
     values or show a defined range (8-,10-,12-,15-,16-bit) and also
     propagate our selection to all other open images. Again, the
     original pixel values remain, we only change the display.
-### tags: exercise brightness-1
+
+**Tags:** exercise brightness-1
+
 \pagebreak
 \newpage
+
+
 ## Contrast Enhancement and Image Manipulation 
 Let's assume you want to
 show gel data in your manuscript. After performing following steps, can
@@ -100,9 +129,12 @@ you discuss why contrast enhancement might be considered fraud?
 2.  Adjust Contrast and Brightness and compare images. What is the
     problem with the contrast-enhanced image?
 ![Contrast problem](fig/contrast-problem.png){#fig:contrast-problem width="65%"}   
-### tags: exercise brightness-2
+
+**Tags:** exercise brightness-2
+
 \pagebreak
 \newpage
+
 
 ## Bit-Depth Conversion
 
@@ -152,9 +184,12 @@ you discuss why contrast enhancement might be considered fraud?
     of a bead. You should see that the image only consists of 2
     intensities: 0 and 255. As you saw, it is important to reset the
     brightness and contrast display before converting the image.
-### tags: exercise bitdepth-1
+
+**Tags:** exercise bitdepth-1
+
 \pagebreak
 \newpage
+
 
 ## Viewing a 3D Stack
 
@@ -184,9 +219,12 @@ you discuss why contrast enhancement might be considered fraud?
 
 6.  When you want to use an animation of the stack in a presentation,
     you can save the stack as an avi using `[File > Save As > AVI...]`.
-### tags: exercise animation-1
+
+**Tags:** exercise animation-1
+
 \pagebreak
 \newpage
+
 
 
 ## Order of Dimensions
@@ -203,9 +241,12 @@ you discuss why contrast enhancement might be considered fraud?
     does not make any sense, change the z-dimension to a time dimension.
     As you can see, from the user perspective, this does not change
     anything at the moment.
-### tags: exercise dimensions-1
+
+**Tags:** exercise dimensions-1
+
 \pagebreak
 \newpage
+
 
 ## Manipulating Stacks -- Creating a Montage 
 
@@ -226,9 +267,12 @@ data is presented (typically along time or z-axis) is the montage view.
 
 3.  You can see how easy it is to create a custom montage view, play
     with the different options, e.g. `[Increment]`.
-### tags: exercise montage-1
+
+**Tags:** exercise montage-1
+
 \pagebreak
 \newpage
+
 
 ## Manipulating Stacks -- Creating an Insert
 We now want to do something
@@ -262,9 +306,12 @@ as an overview. How would you proceed?
 6.  Again, a very easy procedure -- explore further stack operations on
     your own.
 
-### tags: exercise insert-1
+
+**Tags:** exercise insert-1
+
 \pagebreak
 \newpage
+
 
 ## RGB Images
 
@@ -306,9 +353,12 @@ as an overview. How would you proceed?
 7.  Try to perform already known operations on just one color channel,
     e.g. adjust the brightness (you can see that the little histogram
     changes color when you change the channel!).
-### tags: exercise rgb-1
+
+**Tags:** exercise rgb-1
+
 \pagebreak
 \newpage
+
 
 ## Exploring Lookup Tables
 
@@ -341,9 +391,12 @@ as an overview. How would you proceed?
 
 ![Lookup Tables in
 Fiji](fig/lookup-tables.png){#fig:lookup-tables width="80%"}
-### tags: exercise lut-1
+
+**Tags:** exercise lut-1
+
 \pagebreak
 \newpage
+
 
 ## Effects of LUT Changes
 
@@ -363,9 +416,12 @@ Fiji](fig/lookup-tables.png){#fig:lookup-tables width="80%"}
 
 6.  Change the LUT to spectrum and discuss the differences between the
     gray and spectrum LUTs.
-### tags: exercise lut-2
-\pagebreak\pagebreak
+
+**Tags:** exercise lut-2
+\pagebreak
+\pagebreak
 \newpage
+
 
 ## Calibration Bars 
 A calibration bar is typically added to a figure when
@@ -387,9 +443,12 @@ where the change in intensity is not linear ('gamma').
 ![Calibration bar](fig/calibration-bar-dialog.png){#fig:calbar width="25%"}   
 
 
-### tags: exercise calibrationbar-1
+
+**Tags:** exercise calibrationbar-1
+
 \pagebreak
 \newpage
+
 
 ## Working with 5D Data 
 To illustrate working with 5D data, we will import
@@ -420,9 +479,12 @@ protein undergoing mitosis (Courtesy of Eric Griffis).
     time-stamps(51). Browse through the image, adjust Brightness if
     necessary. Upload the created flybrain image stack to OMERO. Open the original image`[File > Open Samples > Mitosis (26 MB, 5D stack)]` and compare with our version. One thing to notice is that we lost information about the
     z-spacing, distance between time-stamps or channel colors.
-### tags: exercise 5d-data
+
+**Tags:** exercise 5d-data
+
 \pagebreak
 \newpage
+
 
 
 ## Projection (Dimensionality reduction) 
@@ -450,9 +512,12 @@ that you can swap dimensions with
     ![Z-projection dialog](fig/z-projection-dialog.png){#fig:zprojd width="25%"}   
 
 3.  Explore various projections on the flybrain stack created previously.
-### tags: exercise z-projection-1
+
+**Tags:** exercise z-projection-1
+
 \pagebreak
 \newpage
+
 
 ## Orthogonal View 
 Another very common visualization is the orthogonal
@@ -465,7 +530,8 @@ the orientation of the reader at the same time.
 1.  Open the stack GMR-10A12-AE-01.tif. Show the orthogonal view with
     `[Image > Stacks > Orthogonal Views]`. Try scrolling through the
     axes to get a feeling for this view.
-### tags: exercise ortho-view-1
+
+**Tags:** exercise ortho-view-1
 
 ## Color Coding
 One option to add a third dimension on a 2-dimensional plot
@@ -485,9 +551,12 @@ into other tissue parts or vesicles moving around over time.
 
 
 2.  Compare the color-coded image with the original time-series.
-### tags: exercise color-coding-1
+
+**Tags:** exercise color-coding-1
+
 \pagebreak
 \newpage
+
 
 ## Generating a Kymograph Plot 
 A Kymograph is an visualization to present a
@@ -528,10 +597,13 @@ axon or cells migrating in reference to a body axis during development).
     anterograde from retrograde movement (in reference to soma).
 
 ![Kymograph](fig/kymograph.png){#fig:kymo width="85%"}   
-### tags: exercise kymograph-1
+
+**Tags:** exercise kymograph-1
+
 
 \pagebreak
 \newpage
+
 
 ## 3D View 
 Instead of trying to visualize our data in 2 dimensions, we can
@@ -571,9 +643,12 @@ data.
 
 4.  Further instructions on the 3D viewer can be found at:
     https://imagej.net/3D_Viewer.
-### tags: exercise 3d-viewer
+
+**Tags:** exercise 3d-viewer
+
 \pagebreak
 \newpage
+
 
 ## Resampling Example - No Interpolation
 
@@ -595,7 +670,8 @@ data.
     other was scaled to 150%.
 
 5.  Try other values for the resizing and observe the results.
-### tags: exercise resampling-1
+
+**Tags:** exercise resampling-1
 
 ## Resampling Example - With Interpolation
 
@@ -611,7 +687,8 @@ data.
     original data has been changed.
 
 4.  Try other values for the resizing and observe the results.
-### tags: exercise resampling-2
+
+**Tags:** exercise resampling-2
 
 ## Omero.figure - Image with scalebar
 
@@ -644,7 +721,8 @@ data.
 
 9.  Note that the exported figures were added as attachement to the
     original image.
-### tags: exercise omero-figure-1
+
+**Tags:** exercise omero-figure-1
 
 ## Omero.figure - Creating multipanel figures
 
@@ -704,18 +782,21 @@ data.
     delete all labels, crop and adjust scalebars in the same way.
 
 14. Save the figure.
-### tags: exercise omero-figure-2
+
+**Tags:** exercise omero-figure-2
 
 ## Omero.figure - Limitations
 1. Please try to create a figure in OMERO.figure similar to the figure created in the exercise "Manipulating Stacks - Creating a montage" in FIJI.
 
 2. Review the exercises on creating inserts, calibration bars, z-projections and so on and think whether it would be (easily) possible to implement them in OMERO.figure as well.
-### tags: exercise omero-figure-3
+
+**Tags:** exercise omero-figure-3
+
 \pagebreak
 \newpage
+
+
 # Part 2
-
-
 ## Working with histograms
 
 1.  Open the image hela-cells.tif. This is another
@@ -740,9 +821,12 @@ data.
 5.  Click on \[live\] in the histogram dialog and change the channel.
     Observe the changes in the histogram and note the color changes in
     the depicted colormap bar.
-### tags: exercise histogram-1 
+
+**Tags:** exercise histogram-1 
+
 \pagebreak
 \newpage
+
 
 ## Working with ROIs 1
 
@@ -756,7 +840,8 @@ One of the operations you can perform on a ROI is cropping:
     create a ROI on the duplicate. Crop the image. Note that the minimum
     and maximum values of your ROI have been used to determine a
     rectangular selection for the cropping.
-### tags: exercise roi-1
+
+**Tags:** exercise roi-1
 
 ## Working with ROIs 2
 ROIs can be used to create image masks. An image mask is a binary image
@@ -784,7 +869,8 @@ that defines which parts of the image are of interest.
 4.  Go back to the original image. Use the command
     `[Edit > Selection > Create Mask]` to directly generate a mask
     image.
-### tags: exercise roi-2
+
+**Tags:** exercise roi-2
 
 ## Working with ROIs 3
 Operations are usually performed on the selected ROIs and on the whole
@@ -794,7 +880,8 @@ image if no selections exist.
 
 2.  Observe that `[Edit > Invert]` only affects the selected pixels.
     Undo the inversion.
-### tags: exercise roi-3
+
+**Tags:** exercise roi-3
 
 ## Working with ROIs 4
 Finally, there are several operations that work on a ROI itself without
@@ -829,9 +916,12 @@ options.
     outside Fiji, you can list the coordinates of the ROI as well.
 
 ![ROI properties](fig/roi-properties.png){#fig:roi-properties width="25%"}   
-### tags: exercise roi-4
+
+**Tags:** exercise roi-4
+
 \pagebreak
 \newpage
+
 
 ## Working with the ROI Manager
 
@@ -862,9 +952,12 @@ options.
 
 6.  Select all ROIs and save them to OMERO `[Plugin > OMERO > Save ROIs...]` - we will use these ROIs for
     measurements. Additionaly, you can save the ROIs to your local disk using the ROI manager. Do you recognize any advantages or disadvantages in saving ROIs to OMERO?
-### tags: exercise roi-manager-1
+
+**Tags:** exercise roi-manager-1
+
 \pagebreak
 \newpage
+
 
 ## Using the ROI Manager 
 Now, we are going to combine ROIs (and the ROI
@@ -885,9 +978,12 @@ gets!
     'Background' and update the saved ROI file; we will need this for
     further measurements.
 
-### tags: exercise roi-manager-2
+
+**Tags:** exercise roi-manager-2
+
 \pagebreak
 \newpage
+
 ## Histogram Normalization
 
 1.  Open the image hela-cells.tif and duplicate the green
@@ -902,9 +998,12 @@ gets!
 3.  Compare the histograms.
 
 4.  Leave the images open; you can also explore different settings.
-### tags: exercise histogram-2
+
+**Tags:** exercise histogram-2
+
 \pagebreak
 \newpage
+
 
 ## Subtracting background levels 
 A common task is the subtraction of the
@@ -922,9 +1021,12 @@ subtraction possible.
 4.  Subtract the average background level from the green channel, using
     `[Process > Math > Subtract]`. You can also measure the backgrounds
     of the other color channels and subtract those as well.
-### tags: exercise bg-subtraction-1
+
+**Tags:** exercise bg-subtraction-1
+
 \pagebreak
 \newpage
+
 
 ## Bit-depth/Format Problems 
 Performing arithmetic operation changes the pixel values. This can potentially lead to e.g. clipped values. So where indicated care must be taken to convert images to a suitable bitdepth.
@@ -944,9 +1046,12 @@ Performing arithmetic operation changes the pixel values. This can potentially l
 
 5.  Convert your image to an appropriate format and compare results.
 
-### tags: exercise bitdepth-2
+
+**Tags:** exercise bitdepth-2
+
 \pagebreak
 \newpage
+
 
 ## Background subtraction 
 In this example, we are exploring a common method
@@ -974,9 +1079,12 @@ increase contrast of moving bacteria.
 
 Not surprisingly, the authors of the original publication used exactly
 this approach as the first step in their image processing.
-### tags: exercise bg-subtracion-2
+
+**Tags:** exercise bg-subtracion-2
+
 \pagebreak
 \newpage
+
 
 ## Math on Masks 
 Before, we used the ROI Manager XOR function to obtain the
@@ -1007,9 +1115,12 @@ anyway!).
 
 8.  Using `[Edit > Create Selection]`, you can create a selection from
     the mask.
-### tags: exercise mask-1
+
+**Tags:** exercise mask-1
+
 \pagebreak
 \newpage
+
 
 
 
@@ -1087,9 +1198,12 @@ know that these need to be replaced (e.g. when the sequence Duplicate
 Image, Gaussian, Image Calculator is used). In this case, we have to
 create a macro where individual file names get replaced. 
 
-### tags: exercise bg-subtraction-3 batch-1
+
+**Tags:** exercise bg-subtraction-3 batch-1
+
 \pagebreak
 \newpage
+
 ## Working with Image Filters 
 
 
@@ -1115,8 +1229,10 @@ create a macro where individual file names get replaced.
 
 ![Convolver dialog](fig/convolver-dialog.png){#fig:convolver-dialog width="45%"}   
 
+
 \pagebreak
 \newpage
+
 
 3.  Compare the new pixel values with the values shown in the example.
     Do you observe any differences? You should note that pixels at the
@@ -1126,10 +1242,13 @@ create a macro where individual file names get replaced.
     size to fit the kernel within the image (padding). These extra
     pixels are duplicates of border pixels and therefore, the results
     differ.
-### tags: exercise filter-1
+
+**Tags:** exercise filter-1
+
 
 \pagebreak
 \newpage
+
 
 ## The point spread function (PSF)
 
@@ -1164,9 +1283,12 @@ a measured PSF.
 3.  Compare the groundtruth image with the convolved image. This is what
     happens every time you take an image with the microscope! (Although
     this is only a 2D, simplified example).
-### tags: exercise filter-2
+
+**Tags:** exercise filter-2
+
 \pagebreak
 \newpage
+
 
 ## Averaging pixels
 
@@ -1192,9 +1314,12 @@ a measured PSF.
 
 4.  To show the effect of the filter more directly, you can subtract the
     smoothed from the original image.
-### tags: exercise filter-3
+
+**Tags:** exercise filter-3
+
 \pagebreak
 \newpage
+
 
 ## Gradient Filters
 
@@ -1215,9 +1340,12 @@ a measured PSF.
 
 5.  What happens if you first use a smoothing filter and then the edge
     detection filter?
-### tags: exercise filter-4
-    \pagebreak
+
+**Tags:** exercise filter-4
+    
+\pagebreak
 \newpage
+
 
 ## Gaussian Filters
 
@@ -1231,9 +1359,12 @@ a measured PSF.
 3.  Try to find an optimal value for $\sigma$.
 
 4.  Implement a DoG filter with $\sigma$ values of $1$ and $10$.
-### tags: exercise filter-5
+
+**Tags:** exercise filter-5
+
 \pagebreak
 \newpage
+
 
 ## Median Filter
 
@@ -1249,10 +1380,13 @@ a measured PSF.
     same radius.
 
 4.  Which filter works better?
-### tags: exercise filter-6
+
+**Tags:** exercise filter-6
+
 
 \pagebreak
 \newpage
+
 
 
 
@@ -1277,9 +1411,12 @@ effects of thresholding using brightness/contrast adjustments.
 3.  If you now change the brightness, you can move this vertical line
     around and observe that the number of pixels identified as white
     (black) changes.
-### tags: exercise  
+
+**Tags:** exercise  
+
 \pagebreak
 \newpage
+
 
 ## Manual thresholding 
 Instead of adjusting the contrast, Fiji has a
@@ -1306,9 +1443,12 @@ specialized function to adjust the threshold
 3.  Change values and play with different settings until you think you
     found an optimal threshold. How difficult is it to obtain an optimal
     threshold, i.e. how sensitive is the result to your chosen value?
-### tags: exercise threshold-1
+
+**Tags:** exercise threshold-1
+
 \pagebreak
 \newpage
+
 ## Automated thresholding
 
 1.  Open the image hela-cells.tif. In this task, we first
@@ -1338,9 +1478,12 @@ specialized function to adjust the threshold
     the results. At the end, the result we obtain is not perfect but
     might be sufficient for our needs. You will see in the section about
     binary images how we could still improve on this thresholding.
-### tags: exercise threshold-2
+
+**Tags:** exercise threshold-2
+
 \pagebreak
 \newpage
+
 ## Morphological operations
 
 1.  Open the image thresholded-nuclei.tif. This image
@@ -1359,9 +1502,12 @@ specialized function to adjust the threshold
 4.  Try the command `[Process > Binary > Fill Holes]`. This operation
     finds background areas that are completely surrounded by foreground
     and sets all those pixels to foreground.
-### tags: exercise morphology-1   
+
+**Tags:** exercise morphology-1   
+
 \pagebreak
 \newpage
+
 
 ## Skeleton analysis
 
@@ -1392,9 +1538,12 @@ specialized function to adjust the threshold
     summary results with branch statistics, and an image showing the
     skeleton with branch points and end points in different colors. You
     can try out different prune methods and compare the results. Refer to https://imagej.net/AnalyzeSkeleton to get more information on the visualization.
-### tags: exercise morphology-2
+
+**Tags:** exercise morphology-2
+
 \pagebreak
 \newpage
+
 
 ## Watershed transform
 
@@ -1404,9 +1553,12 @@ specialized function to adjust the threshold
 
 2.  Use `[Process > Binary > Watershed]` on the binary image. Observe
     where the algorithm splits objects.
-### tags: exercise watershed-1
+
+**Tags:** exercise watershed-1
+
 \pagebreak
 \newpage
+
 
 ## Analyze Particles
 
@@ -1438,9 +1590,12 @@ specialized function to adjust the threshold
 5.  Explore the functions of the particle-analyzer method and try to
     select objects in a way that only small/large or round objects are
     measured.
-### tags: exercise particle-analyzer-1
+
+**Tags:** exercise particle-analyzer-1
+
 \pagebreak
 \newpage
+
 
 # Part 3
 
@@ -1466,7 +1621,8 @@ specialized function to adjust the threshold
     thinks is background and foreground. If you click on 'Create result'
     a two color image is generated. Convert this image into a
     binary image, perform a watershed operation and count nuclei again.
-### tags: exercise weka-1
+
+**Tags:** exercise weka-1
 
 ## StarDist Segmentation
 
@@ -1479,4 +1635,5 @@ specialized function to adjust the threshold
 4. Run the Stardist segmentation again and explore the effect of different settings (e.g. Probability/ Score Threshold and Overlap Threshold).
 
 5. Refer to https://imagej.net/StarDist for further information. Be aware that you are employing a pre-trained model here which may well be not applicable to your data and produce non-sense results. However, if you have labelled training data your can train you Stardist model perfectly adapted to your data.
-### tags: exercise stardist
+
+**Tags:** exercise stardist
