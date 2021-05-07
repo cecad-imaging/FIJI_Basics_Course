@@ -934,7 +934,7 @@ options.
     to create an accurate outline of the nucleus and add the selected
     region to the ROI manager. Rename the ROI to 'Nucleus'.
 
-4.  Select the blue channel showing the mitochondria. In this channel,
+4.  Select the green channel showing the mitochondria. In this channel,
     we can estimate the cell outline - create the outline and add the
     selected region to the ROI manager, rename ROI to 'Cell'.
 
