@@ -16,6 +16,7 @@ include-before: |
 
 # Part 1
 ## Using Bioformats
+[//]: # (Ex1.1)
 Let's import a microscope specific file format into
 Fiji.
 
@@ -41,7 +42,9 @@ Fiji.
 
 
 ## Using OMERO
+[//]: # (Ex1.2)
 Now let’s try to utilize OMERO and load the image file sted-confocal.lif into the Omero database:
+
 1. Start the Omero.insight software. Open the config window by clicking the little wrench and enter the server address omero-1.cecad.uni-koeln.de. Enter your credentials an connect to Omero.
 
 2. Unfold the Display Groups dropdown menu in the toolbar and tick the All Members checkbox in the course group.
@@ -61,6 +64,7 @@ Now let’s try to utilize OMERO and load the image file sted-confocal.lif into 
 
 
 ## Scale Bars
+[//]: # (Ex1.3)
 Let's explore one thing you usually have to include in your
 microscopy data: a scale bar that indicates the size of each pixel.
 
@@ -74,23 +78,27 @@ microscopy data: a scale bar that indicates the size of each pixel.
 
 
 3.  In case you have an image where information about the scale is
-    visible in the image itself, you can then measure the length with a
-    line and include this information in the dialog. Clicking on Global
+    visible in the image itself (e.g. an object of known size), you can then measure the length with the
+    line tool and enter this information in the dialog. Clicking on Global
     helps if you take one image of a micro-scale and want to use this
     information in other images you took with the same settings (e.g. on
-    a small Lab-Microscope).
+    a small Lab-Microscope). To try this activate the global option and open another image of your choice. Can you imagine potential problems caused by the Global option?
 
-4.  Let's add a scale bar now. Use `[Analyze \> Tools \> Scale Bar]`.
+4.  Let's add a scale bar now. Use `[Analyze > Tools > Scale Bar]`.
     Similar to the calibration bar, the dialog lets you adjust various
     visual parameters .
 
-5.  Now open the file using Omero.insight again. Double click the image
-    to open a viewer window. Use the Display menu to add and adjust a scalebar. Export the image (toolbar icon with image and red arrow). 
+5.  In FIJI you can immediately recognize whether an image contains scaling information. Take a look at the subtitle line of an image window! The default way to access this scaling information is via the image properties dialog (press ``Ctrl+Shift+P`` to open). 
+
+6. Also look for the scaling information in Omero.web (General pane). Do you observe a difference when opening images with and without scaling information in the Omero.iviewer (regarding the scalebar)? Can you add scaling information to images in Omero?
 
 **Tags:** exercise scalebar-1
 
-## Brightness Adjustments
+\pagebreak
+\newpage
 
+## Brightness Adjustments
+[//]: # (Ex1.4)
 1.  Open the file fibroblast_sim.tif from OMERO in Fiji. This is a 16-bit
     gray-scale image showing actin filaments in a cell.
 
@@ -119,8 +127,8 @@ microscopy data: a scale bar that indicates the size of each pixel.
 
 
 ## Contrast Enhancement and Image Manipulation 
-Let's assume you want to
-show gel data in your manuscript. After performing following steps, can
+[//]: # (Ex1.5)
+Let's assume you want to show gel data in your manuscript. After performing following steps, can
 you discuss why contrast enhancement might be considered fraud?
 
 1.  Open the image gel.tif and duplicate the image (another
@@ -130,18 +138,40 @@ you discuss why contrast enhancement might be considered fraud?
     problem with the contrast-enhanced image?
 ![Contrast problem](fig/contrast-problem.png){#fig:contrast-problem width="65%"}   
 
+[//]: # (discussion whats the problem? - overestimation of bands)
+[//]: # (how to find out if image HAS been preprocessed? - clipped histogram)
 **Tags:** exercise brightness-2
 
 \pagebreak
 \newpage
 
 
-## Bit-Depth Conversion
+## Histogram Normalization
+[//]: # (Ex1.6 formerly 2.8)
+1.  Open the image hela-cells.tif and duplicate the green
+    channel. Obtain a histogram.
 
+2.  Use `[Process > Enhance Contrast]` on the duplicate. Set saturated
+    pixels to 0, tick normalize and not equalize and obtain a histogram
+    afterwards.
+
+![Enhance contrast dialog](fig/enhance-contrast-dialog.png){#fig:enhance-contrast-dialog width="65%"}   
+
+3.  Compare the histograms.
+
+4.  Leave the images open; you can also explore different settings.
+
+**Tags:** exercise histogram-2
+
+\pagebreak
+\newpage
+
+## Bit-Depth Conversion
+[//]: # (Ex1.7 formerly 1.6)
 1.  Open the image beads.tif from OMERO.
     Duplicate the image with `[Image > Duplicate...]`. Choose the line
     selection tool and draw a line through one of the bright spheres in
-    the image. 
+    the image. Note that if you double-click the line tool, you could adjust the width of the line tool. Now the default of 1px is fine.
 ![Line ROI example](fig/line-roi-example.png){#fig:line  width="75%"}
     
 2.  In the next step, we will look at the intensity (brightness)
@@ -155,7 +185,7 @@ you discuss why contrast enhancement might be considered fraud?
     save and copy the values. If you click on `[Live]`, you can change
     the line ROI and the plotted profile will update. Try the update by
     drawing a line somewhere on the background and then again through a
-    bead. Turn the live mode off again by another click on the button.
+    bead. Turn the live mode off again by another click on the button.  If you click on `[List]`, you can export the intensity values as a table.
 
 ![Plot profile example](fig/plot-profile-example.png){#fig:ppe width="55%"}    
 
@@ -166,13 +196,7 @@ you discuss why contrast enhancement might be considered fraud?
     again. A second window pops up. Compare the plot profiles of the
     8-bit and the 16-bit images. The conversion modified the brightness
     value (y-value). While the profiles are similar, the scaling is
-    different. The image is scaled according to following equation:
-    $$I_{8bit}=\frac{I_{16bit}(x,y)-min(I_{16bit}(x,y))}{max(I_{16bit}(x,y))-min(I_{16bit}(x,y))}*2^8$$
-    with:\
-    I~16bit~(x,y): 16bit image\
-    I~8bit~(x,y): 8bit image\
-    max(I~16bit~(x,y)): maximum value of 16bit image\
-    min(I~16bit~(x,y)): minimum value of 16bit image\
+    different.
 
 4.  Convert the image back to 16-bit and check the intensity values
     again. In this case, the intensity values are not increased.
@@ -192,7 +216,7 @@ you discuss why contrast enhancement might be considered fraud?
 
 
 ## Viewing a 3D Stack
-
+[//]: # (Ex1.8 formerly 1.7)
 1.  Open the file flybrain-template.tif from OMERO. This is an 8-bit
     gray-scale z-stack, showing a standard template of a fly brain. You
     should see that there is a slider below the image to go through
@@ -220,6 +244,8 @@ you discuss why contrast enhancement might be considered fraud?
 6.  When you want to use an animation of the stack in a presentation,
     you can save the stack as an avi using `[File > Save As > AVI...]`.
 
+7. As with 2D images you can use the properties dialog ``Ctrl+Shift+P`` to access the scaling information. Besides x and y also z should have a meaningful value. Think about possible consequences of anisotropic voxels for measurements.
+
 **Tags:** exercise animation-1
 
 \pagebreak
@@ -228,7 +254,7 @@ you discuss why contrast enhancement might be considered fraud?
 
 
 ## Order of Dimensions
-
+[//]: # (Ex1.9 formerly 1.8)
 1.  Open the file flybrain-template.tif if it is not still
     open.
 
@@ -240,7 +266,7 @@ you discuss why contrast enhancement might be considered fraud?
     `[Image > Hyperstacks > Re-order Hyperstacks...]`. Although this
     does not make any sense, change the z-dimension to a time dimension.
     As you can see, from the user perspective, this does not change
-    anything at the moment.
+    anything at the moment. Open the properties dialog ``Ctrl+Shift+P`` to convince yourself that a difference exists.
 
 **Tags:** exercise dimensions-1
 
@@ -249,7 +275,7 @@ you discuss why contrast enhancement might be considered fraud?
 
 
 ## Manipulating Stacks -- Creating a Montage 
-
+[//]: # (Ex1.10 formerly 1.9)
 A common way 3-dimensional
 data is presented (typically along time or z-axis) is the montage view.
 
@@ -264,8 +290,9 @@ data is presented (typically along time or z-axis) is the montage view.
     ![Make montage dialog](fig/make-montage-dialog.png){#fig:mmdia width="21%"}   
 
 
+3.  Note that labels, frames and so on are part of the image. This means you may observe undesired effects if you try to adjust brightness and contrast after creating the montage. Thus make sure that you do all required processing before crating the montage. However, be aware that usually images displayed together in a montage should not be processed differently!
 
-3.  You can see how easy it is to create a custom montage view, play
+4.  You can see how easy it is to create a custom montage view, play
     with the different options, e.g. `[Increment]`.
 
 **Tags:** exercise montage-1
@@ -275,8 +302,8 @@ data is presented (typically along time or z-axis) is the montage view.
 
 
 ## Manipulating Stacks -- Creating an Insert
-We now want to do something
-more complicated: let's say we want to show a detail of the flybrain,
+[//]: # (Ex1.11 formerly 1.10)
+We now want to do something more complicated: let's say we want to show a detail of the flybrain,
 e.g. the central complex or the optic lobes. To help viewers, we want to
 put a little version of the complete brain in the corner of our 3D image
 as an overview. How would you proceed?
@@ -299,7 +326,7 @@ as an overview. How would you proceed?
 5.  The insert is created with `[Image > Stacks > Tools > Insert...]`.
     Make sure you use the detailed view of brain as `[Destination]` and
     the overview as `[Source]`. `[X-Location]` and `[Y-Location]` can
-    remain 0.
+    remain 0. The terms destination and source can be confusing in this context. Destination means the larger image into which the smaller image (source) is to be inserted.
 
 ![Stack inserter](fig/stack-inserter-dialog.png){#fig:stains width="25%"}  
 
@@ -314,13 +341,13 @@ as an overview. How would you proceed?
 
 
 ## RGB Images
-
+[//]: # (Ex1.12 formerly 1.11)
 1.  Download the file muscle-cell.tif from OMERO and open it with FIJI. (Alternatively open the image via the Fiji-Plugin, however, this converts RGB images by default into 3 channel composite images. So you have to convert the image in Fiji to RGB then by  `[Image > Type > RGB Color]`.  This image was taken
     from a publication in Nature Cell Biology 5, 598(2003); Cell of the
     Month: The vascular smooth muscle cell cytoskeleton; Mario Gimona;
     DOI:10.1038.ncb0703-598. This RGB image shows mouse smooth muscle
     cell with fluorescent labels of the cytoskeleton. Use
-    `[Image > Show Info...]` for details about this image.
+    `[Image > Show Info...]` for details about this image. Also confirm with the pixel inspection tool that you really have an RGB image now. You will see RGB-tuples instead of single values per pixel.
 
 2.  Use `[Image > Adjust > Brightness/Contrast]` and change the slider
     values. Observe that this operation affects all colors
@@ -344,8 +371,7 @@ as an overview. How would you proceed?
 6.  The composite image allows us to work on each channel separately.
     Perform `[Image > Color > Channels Tool...]`. In this dialog, you
     can select individual channels in composite mode or view individual
-    channels in Color/Grayscale mode. Try out the different
-    settings.
+    channels in Color/Grayscale mode. Try out different settings. Via the more button you can also quickly change the color (i.e. the look-up table) of each channel.
 
 ![Stack animation](fig/channels-tool-dialog.png){#fig:chntls width="22%"}   
     
@@ -361,7 +387,7 @@ as an overview. How would you proceed?
 
 
 ## Exploring Lookup Tables
-
+[//]: # (Ex1.13 formerly 1.12)
 1.  Open the image beads.tif. You can look at the LUT of
     the current image with `[Image > Color > Show LUT]` which is the
     standard linear grayscale LUT you have already seen.
@@ -385,8 +411,7 @@ as an overview. How would you proceed?
     Change the LUT to Spectrum using
     `[Image > Lookup Tables > Spectrum]`.
 
-5.  Display the current LUT of the image. Try out different available
-    LUTs and display their profile.
+5.  Display the LUT of the image via `[Image > Color > Edit LUT...]`. Try out different LUTs and also display their profile.
 
 
 ![Lookup Tables in
@@ -399,7 +424,7 @@ Fiji](fig/lookup-tables.png){#fig:lookup-tables width="80%"}
 
 
 ## Effects of LUT Changes
-
+[//]: # (Ex1.14 formerly 1.13)
 1.  Download the file muscle-cell.tif from OMERO and open it with FIJI. (Alternatively open the image via the Fiji-Plugin, however, this converts RGB images by default into 3 channel composite images. So you have to convert the image in Fiji to RGB then by  `[Image > Type > RGB Color]`.
 
 2.  Simulate color-blindness with
@@ -419,16 +444,15 @@ Fiji](fig/lookup-tables.png){#fig:lookup-tables width="80%"}
 
 **Tags:** exercise lut-2
 \pagebreak
-\pagebreak
 \newpage
 
 
 ## Calibration Bars 
-A calibration bar is typically added to a figure when
+[//]: # (Ex1.15 formerly 1.14)
+A calibration bar is typically added to a figure when 
 intensity comparisons are made. A calibration bar indicates which color
 corresponds to which brightness. This is especially important when you
-use LUTs with more than one color or when you use a single color LUT
-where the change in intensity is not linear ('gamma').
+use LUTs with more than one color.
 
 1.  Open the image fibroblast-sim.tif.
 
@@ -442,7 +466,12 @@ where the change in intensity is not linear ('gamma').
 
 ![Calibration bar](fig/calibration-bar-dialog.png){#fig:calbar width="25%"}   
 
+4. You may not be satified by the odd numbers the calibration bar is scaled with. One easy way to fix this is to adjust the brightness of the image before adding the calibration bar. Open the image fibroblast-sim.tif again.
 
+5.  Open the B&C dialog ``Ctrl+Shift+C``, click the Set button and set the maximum displayed value to 40000 (be aware that you saturate some pixels by doing so!).
+
+6.  Add the calibration bar with \[Analyze \> Tools \> Calibration
+    Bar\...\]. Set number of labels to be 5. The calibration bar should be scaled from 0 to 40000 in steps of 10000. This method will not work on 8bit images.
 
 **Tags:** exercise calibrationbar-1
 
@@ -450,7 +479,8 @@ where the change in intensity is not linear ('gamma').
 \newpage
 
 
-## Working with 5D Data 
+## Working with 5D Data
+[//]: # (Ex1.16 formerly 1.15)
 To illustrate working with 5D data, we will import
 a sequence of files that are labeled with \_t000_z000_c000 and
 increasing numbering. The sequence of files has been generated from the
@@ -461,13 +491,15 @@ protein undergoing mitosis (Courtesy of Eric Griffis).
 
 1.  Open OMERO.insight and download all the files from the mitosis dataset (user: Peter Zentis). Do you see any problem about downloading these files using the OMERO.web client? In the OMERO.web client also try to apply an export script to the complete dataset, i.e. first select the mitosis dataset, then click on the cogwheel icon in the top menu bar and navigate to export_scripts>Batch Image Export...
 
-2.  Go to `[Plugins > Bio-Formats > Bio-Formats Importer]` and select
+2.  Try to open the image by drag and drop of the folder on IJ, what is the problem?
+
+3.  Go to `[Plugins > Bio-Formats > Bio-Formats Importer]` and select
     the first image in the folder of the downloaded images.
 
-2.  The Bio-Formats import options dialog shows up, make sure to select
+4.  The Bio-Formats import options dialog shows up, make sure to select
    `[Group files with similar names]`.
 
-3.  In the dialog, you can choose how to stitch the files. We select "Pattern". This
+5.  In the dialog, you can choose how to stitch the files. We select "Pattern". This
     parses the file based on:
     mitosis_t0\<01-51\>\_z00\<1-5\>\_c00\<1-2\>.tif. \<\> denotes the
     range of the import, e.g. we could only select one channel, or any
@@ -475,10 +507,10 @@ protein undergoing mitosis (Courtesy of Eric Griffis).
 
 ![File stitching](fig/bioformats-file-stitching.png){#fig:bfs width="85%"}   
 
-4.  The imported image shows three sliders: channel (2), z-position(5),
+6.  The imported image shows three sliders: channel (2), z-position(5),
     time-stamps(51). Browse through the image, adjust Brightness if
-    necessary. Upload the created flybrain image stack to OMERO. Open the original image`[File > Open Samples > Mitosis (26 MB, 5D stack)]` and compare with our version. One thing to notice is that we lost information about the
-    z-spacing, distance between time-stamps or channel colors.
+    necessary.  Note that we lost information about the
+    z-spacing, time between frames or channel colors (LUT settings). You can open the original image via `[File > Open Samples > Mitosis (26 MB, 5D stack)]` and find the missing information e.g. in the properties dialog ``Ctrl+Shift+P``. Use the properties dialog on the imported image to add the missing information. Save the the created flybrain image as Tiff and upload it to OMERO via the OMERO-Plugin.
 
 **Tags:** exercise 5d-data
 
@@ -487,7 +519,8 @@ protein undergoing mitosis (Courtesy of Eric Griffis).
 
 
 
-## Projection (Dimensionality reduction) 
+## Projection (Dimensionality reduction)
+[//]: # (Ex1.17 formerly 1.16)
 In a projection, data is summarized along one
 axis (dimension). A typical case is the maximum intensity projection of
 the z-axis of a 3D stack, resulting in a 2D image where each pixel
@@ -511,7 +544,7 @@ that you can swap dimensions with
 
     ![Z-projection dialog](fig/z-projection-dialog.png){#fig:zprojd width="25%"}   
 
-3.  Explore various projections on the flybrain stack created previously.
+3.  Explore various projections on the flybrain stack created previously. Can you see potential advantages or disadvantages of each projection method?
 
 **Tags:** exercise z-projection-1
 
@@ -520,6 +553,7 @@ that you can swap dimensions with
 
 
 ## Orthogonal View 
+[//]: # (Ex1.18 formerly 1.17)
 Another very common visualization is the orthogonal
 view. In this view, two additional windows are created that are linked
 to the current slider position of the 2D view. These windows show the XZ
@@ -529,11 +563,19 @@ the orientation of the reader at the same time.
 
 1.  Open the stack GMR-10A12-AE-01.tif. Show the orthogonal view with
     `[Image > Stacks > Orthogonal Views]`. Try scrolling through the
-    axes to get a feeling for this view.
+    axes and zoom into a region of interest to get a feeling for this view.
+    
+2.  Another form of observing your 3D data from a different point of view is Reslicing. Open the stack GMR-10A12-AE-01.tif again.
+
+3.  Reslice by `[Image > Stack > Reslice (/)]`. Leave output spacing at 0,622 microns and choose Start at: Left. You see that the dimensions change but properties remain the same.
+
+4.  Try what happens if your dataset has anisotropic voxel dimensions.
+
 
 **Tags:** exercise ortho-view-1
 
 ## Color Coding
+[//]: # (Ex1.19 formerly 1.18)
 One option to add a third dimension on a 2-dimensional plot
 is to somehow code the information; e.g. using different colors for
 z-depth or time. This can be useful when the data is structured along
@@ -543,14 +585,14 @@ into other tissue parts or vesicles moving around over time.
 1.  Open the image fake-tracks.tif (another Fiji sample
     image). We use a fake file to better illustrate how the color coding
     works, but you can apply it to any 3D data for further testing.
-    Perform `[Image \> Hyperstacks \> Temporal-Color Code\]` and select a
-    LUT of your choice. Due to a bug in FIJI you might get an error message. To fix replace the file Temporal-Color_Code.ijm in plugins/Scripts/Image/Hyperstacks/ with the version provided in the sciebo folder.
+    Perform `[Image > Hyperstacks > Temporal-Color Code]` and select a
+    LUT of your choice. Due to a bug in FIJI you might get an error message. To fix replace the file Temporal-Color_Code.ijm in plugins/Scripts/Image/Hyperstacks/ with the version provided as an attachment to the fake-tracks image in Omero.
 
 ![Color code](fig/color-code-dialog.png){#fig:cocodi width="25%"}   
 
+2.  Why would e.g. the LUT Spectrum be a bad choice for your color code?
 
-
-2.  Compare the color-coded image with the original time-series.
+3.  Compare the color-coded image with the original time-series.
 
 **Tags:** exercise color-coding-1
 
@@ -559,6 +601,7 @@ into other tissue parts or vesicles moving around over time.
 
 
 ## Generating a Kymograph Plot 
+[//]: # (Ex1.20 formerly 1.19)
 A Kymograph is an visualization to present a
 dynamic process in a single image where movements along a line are
 plotted for all time-frames in a stack (*x-t* plot). Therefore, it is
@@ -605,7 +648,8 @@ axon or cells migrating in reference to a body axis during development).
 \newpage
 
 
-## 3D View 
+## 3D View
+[//]: # (Ex1.21 formerly 1.20)
 Instead of trying to visualize our data in 2 dimensions, we can
 also visualize in 3D using the 3D viewer in Fiji. For visualizations in
 3D, several display options are common: Volume, Orthoslice, and Surface.
@@ -626,7 +670,7 @@ data.
 
 3.  Let us try to generate a movie that you can save as an avi file. Use
     the 3D viewer menu to create a simple 360 degree rotation with
-    `[View > Record 360 degree rotation]`. This generate a stack that
+    `[View > Record 360 degree rotation]`. This generates a stack that
     you can now save as a movie using `[File > Save As > AVI]`. In this
     dialog, you can set the compression as well as the frame rate (how
     fast the movie is displayed). For our purposes, we set the
@@ -651,7 +695,7 @@ data.
 
 
 ## Resampling Example - No Interpolation
-
+[//]: # (Ex1.22 formerly 1.21)
 1.  Open the file resampling-test.tiff from OMERO. This is a 20x20
     pixel black-and-white (binary) image. Use the magnification tool to
     zoom to the maximum magnification. You should now see a one pixel
@@ -666,15 +710,29 @@ data.
 4.  Perform a resize to 30 x 30 pixels (150% size), with no
     interpolation, and compare the result with the original figure. Use
     the `Line-Tool` to measure the width of both vertical
-    lines. You should observe that one line was not scaled while the
-    other was scaled to 150%.
+    lines. 4.  You should observe that one line was not scaled (1px before and after) while the other was scaled to 150% (2px to 3px).
 
 5.  Try other values for the resizing and observe the results.
 
+### Optional: Resampling using Image J Macro
+
+6.  To further investigate the effect of resampling without interpolation you can go through this Image J Marco provided by Romain Guiet at EPFL. This code has been provided for a massive open online course (MOOC) for Image Processing and Analysis for Life Scientists.
+https://www.edx.org/course/image-processing-and-analysis-for-life-scientists
+
+Drag and Drop the given macro file image_resizing.ijm into FIJI. You can also open the file under File – Open…
+
+![ImageJ macro editor](fig/macro-editor.png){#fig:macro-editor width="65%"}
+A new window with the script will show up. Click on “Run” to run through the code and follow the instructions. 
+This will open the example image blobs.gif and automatically downsample the image by a factor of 2, 5 and 10. 
+After stacking the images together, you will be able to move through the individual downsampled versions. You can also use the line tool to observe the intensity values along one blob. Which differences can you spot between the downsampled versions?
+
+
 **Tags:** exercise resampling-1
 
-## Resampling Example - With Interpolation
 
+
+## Resampling Example - With Interpolation
+[//]: # (Ex1.23 formerly 1.22)
 1.  Again, work on a duplicate of the resampling-test.tif image.
 
 2.  Adjust the size to 150% with interpolation set to 'Bilinear'. Use
@@ -691,7 +749,7 @@ data.
 **Tags:** exercise resampling-2
 
 ## Omero.figure - Image with scalebar
-
+[//]: # (Ex1.24 formerly 1.23)
 1.  Login into Omero.web. Find the image sted-confocal.lif \[Fab
     Antikoerper\] in the projects pane and right-click on the entry in
     the Project Explorer file list.
@@ -725,7 +783,7 @@ data.
 **Tags:** exercise omero-figure-1
 
 ## Omero.figure - Creating multipanel figures
-
+[//]: # (Ex1.25 formerly 1.24)
 1.  Add another page to the figure \[File \> Paper Setup\... \> Number
     of Pages\]
 
@@ -786,9 +844,10 @@ data.
 **Tags:** exercise omero-figure-2
 
 ## Omero.figure - Limitations
-1. Please try to create a figure in OMERO.figure similar to the figure created in the exercise "Manipulating Stacks - Creating a montage" in FIJI.
+[//]: # (Ex1.26 formerly 1.25)
+1. Please try to create figures in OMERO.figure similar to the figures created in the exercises "Manipulating Stacks - Creating a montage" and "Manipulating Stacks – Creating an Insert" in FIJI.
 
-2. Review the exercises on creating inserts, calibration bars, z-projections and so on and think whether it would be (easily) possible to implement them in OMERO.figure as well.
+2. Review the exercises on creating a calibration bar making z-projections and think whether it would be (easily) possible to implement them in OMERO.figure as well.
 
 **Tags:** exercise omero-figure-3
 
@@ -798,27 +857,29 @@ data.
 
 # Part 2
 ## Working with histograms
-
+[//]: # (Ex2.1)
 1.  Open the image hela-cells.tif. This is another
-    standard Fiji sample image showing HeLa cells. Lysosomes are red,
+    standard Fiji sample image showing HeLa cells, so you can open it via `[File > Open Samples > HeLa Cells 48bit RGB]`. If you open the file from OMERO set Color Mode to Composite in the Bioformats Import Options dialog. Lysosomes should be red,
     mitochondria green and the nucleus blue.
 
-2.  We can show the histogram with `[Analyze > Histogram]`. The
-    histogram is displayed in a new window. The x-axis shows the pixel value and
-    the y-axis the count. Note that the histogram refers to the channel
+2. An easy way to learn something about the intensities in the image is to move the cursor over the image and observe the intensity values in status bar of the FIJI main window (Press Enter to bring the main window to front, in case it is covered by ohter windows.). Another handy tool is the Pixel Inspector which you can activate via a toolbar icon (magnifier glass with Px). When the Pixel Inspector is active you can left-click into the image and another window entitled "Pixel Values" will open which shows the pixel values within the little red square you placed by clicking.
+
+3.  Histograms are a means to quickly get an impression of the complete intensity distribution in an image. We can show the histogram with `[Analyze > Histogram]` (Shortcut: ``Ctrl+H``). If FIJI asks whether all three channels should be diplayed, answer No. The
+    histogram is then displayed in a new window. The x-axis shows the pixel value and
+    the y-axis the count. Also note that the histogram refers to the channel
     that was active when the command was called.
 
 
 ![Histogram](fig/histogram.png){#fig:histog width="25%"}   
 
 
-3.  Obtain the highest and lowest intensities from the histogram. What
+4.  Obtain the highest and lowest intensities from the histogram. What
     does the histogram range tell you?
-
-4.  Click on \[list\] to obtain a list with values and counts. \[Log\]
+    
+5.  Click on \[list\] to obtain a list with values and counts. \[Log\]
     displays the same histogram on a log-scale.
 
-5.  Click on \[live\] in the histogram dialog and change the channel.
+6.  Click on \[live\] in the histogram dialog and change the channel.
     Observe the changes in the histogram and note the color changes in
     the depicted colormap bar.
 
@@ -829,14 +890,14 @@ data.
 
 
 ## Working with ROIs 1
-
+[//]: # (Ex2.2)
 One of the operations you can perform on a ROI is cropping:
 
-1.  Open any image. Duplicate the image. Select a region by a
-    rectangular ROI. Then, perform `[Image > Crop]` on the duplicate.
+1.  Open any image. Duplicate the image  (Shortcut: ``Ctrl+Shift+D``) (Shortcut: ``Ctrl+Shift+X``). Select a region by a
+    rectangular ROI. Then, perform `[Image > Crop]`  (Shortcut: ``Ctrl+Shift+X``) on the duplicate.
     Close the cropped image.
 
-2.  Duplicate the original image again. Use the freehand selection to
+2.  Duplicate the original image again (``Ctrl+Shift+D``). Use the freehand selection to
     create a ROI on the duplicate. Crop the image. Note that the minimum
     and maximum values of your ROI have been used to determine a
     rectangular selection for the cropping.
@@ -844,6 +905,7 @@ One of the operations you can perform on a ROI is cropping:
 **Tags:** exercise roi-1
 
 ## Working with ROIs 2
+[//]: # (Ex2.3)
 ROIs can be used to create image masks. An image mask is a binary image
 that defines which parts of the image are of interest.
 
@@ -851,9 +913,8 @@ that defines which parts of the image are of interest.
     (press \<shift\> during creation to keep multiple ROIs).
 
 2.  Use `[Edit > Clear Outside]` and then `[Edit > Fill]` to generate a
-    mask image (this should look similar to fig.
-    [\[fig:binary-mask\]](#fig:binary-mask){reference-type="ref"
-    reference="fig:binary-mask"}. The 'Clear' command fills the
+    mask image which should look similar to the figure. 
+    The 'Clear' command fills the
     respective area with the background color, 'fill' with the
     foreground color.
 
@@ -873,6 +934,7 @@ that defines which parts of the image are of interest.
 **Tags:** exercise roi-2
 
 ## Working with ROIs 3
+[//]: # (Ex2.4)
 Operations are usually performed on the selected ROIs and on the whole
 image if no selections exist.
 
@@ -881,9 +943,12 @@ image if no selections exist.
 2.  Observe that `[Edit > Invert]` only affects the selected pixels.
     Undo the inversion.
 
+3. If you are uncertain what is inside and what is outside a roi, you can select any roi tool and move the cursor on the area in questions. Inside a roi the cursor will be an arrow (you could use the cursor to drag the roi around) outside a roi the cursor will be cross indicating that you could create new roi by dragging.
+
 **Tags:** exercise roi-3
 
 ## Working with ROIs 4
+[//]: # (Ex2.5)
 Finally, there are several operations that work on a ROI itself without
 changing pixel values `[Edit > Selection > ...]`. Let us explore a few of those
 options.
@@ -924,7 +989,7 @@ options.
 
 
 ## Working with the ROI Manager
-
+[//]: # (Ex2.6)
 1.  Open the image hela-cells.tif.
 
 2.  Open the ROI Manager with `[Analyze > Tools > ROI Manager...]`.
@@ -932,11 +997,11 @@ options.
 3.  For the following analysis, we will only work on the bottom-most
     cell. Select the blue channel showing the nucleus. Use the ROI tools
     to create an accurate outline of the nucleus and add the selected
-    region to the ROI manager. Rename the ROI to 'Nucleus'.
+    region to the ROI manager. (Use the `Add` button in the roi manager window or shortcut ``t``). Rename the ROI to 'Nucleus - Your Name'.
 
 4.  Select the green channel showing the mitochondria. In this channel,
     we can estimate the cell outline - create the outline and add the
-    selected region to the ROI manager, rename ROI to 'Cell'.
+    selected region to the ROI manager, rename ROI to 'Cell - Your Name'.
 
 5.  Let's say the task we want to solve is get the area of the cell,
     excluding the nucleus, for our further analysis. We now explore an
@@ -948,7 +1013,7 @@ options.
     function returns the area where both inputs differ, i.e. not
     overlap. As the 'nucleus' ROI is located within the 'Cell' ROI, this
     subtracts the nucleus from the cell. Add the resulting ROI to the
-    ROI Manager and rename to 'Cytoplasm'.
+    ROI Manager and rename to 'Cytoplasm - Your Name'.
 
 6.  Select all ROIs and save them to OMERO `[Plugin > OMERO > Save ROIs...]` - we will use these ROIs for
     measurements. Additionaly, you can save the ROIs to your local disk using the ROI manager. Do you recognize any advantages or disadvantages in saving ROIs to OMERO?
@@ -958,135 +1023,8 @@ options.
 \pagebreak
 \newpage
 
-
-## Using the ROI Manager 
-Now, we are going to combine ROIs (and the ROI
-Manager) with measurements -- you will see how powerful this already
-gets!
-
-1.  Open the image hela-cells.tif. Check the import ROIs option in the Bioformats options window or open the ROI Manager
-    and load the previously generated ROI data.
-
-2.  Measure the area and average intensity of the whole cell, the
-    nucleus and the cytoplasm in the green channel and compare the
-    results.
-
-![Results window](fig/results-window.png){#fig:results-window width="65%"}   
-
-3.  Create a ROI in the background of the image (no cell), select the
-    green channel and measure the average intensity again. Name the ROI
-    'Background' and update the saved ROI file; we will need this for
-    further measurements.
-
-
-**Tags:** exercise roi-manager-2
-
-\pagebreak
-\newpage
-
-## Histogram Normalization
-
-1.  Open the image hela-cells.tif and duplicate the green
-    channel. Obtain a histogram.
-
-2.  Use `[Process > Enhance Contrast]` on the duplicate. Set saturated
-    pixels to 0, tick normalize and not equalize and obtain a histogram
-    afterwards.
-
-![Enhance contrast dialog](fig/enhance-contrast-dialog.png){#fig:enhance-contrast-dialog width="65%"}   
-
-3.  Compare the histograms.
-
-4.  Leave the images open; you can also explore different settings.
-
-**Tags:** exercise histogram-2
-
-\pagebreak
-\newpage
-
-
-## Subtracting background levels 
-A common task is the subtraction of the
-background levels of our images to make them comparable (background
-levels might vary). Subtracting a constant is the most basic background
-subtraction possible.
-
-1.  Open the image hela-cells.tif and again check the load ROIs option to get your previously defined ROIs into the ROI manager.
-
-2.  Measure the average intensity in the background and note the value.
-
-3.  Select the overall image `[Edit > Selection > Select All]` in the
-    green channel.
-
-4.  Subtract the average background level from the green channel, using
-    `[Process > Math > Subtract]`. You can also measure the backgrounds
-    of the other color channels and subtract those as well.
-
-**Tags:** exercise bg-subtraction-1
-
-\pagebreak
-\newpage
-
-
-## Bit-depth/Format Problems 
-Performing arithmetic operation changes the pixel values. This can potentially lead to e.g. clipped values. So where indicated care must be taken to convert images to a suitable bitdepth.
-
-1.  Open the image hela-cells.tif. Duplicate the green
-    channel.
-
-2.  Look at the histogram of the green channel.
-
-3.  Now, multiply the image by 2.5 - this increases the brightness of the image.
-
-4.  Generate the histogram again and compare the number of saturated
-    values. As you can see, if we get a value outside the image bit-depth the value will be clipped (i.e. set to the maximum value possible). If the result is a real
-    number but our format only allows whole numbers, the resulting value is rounded. Of course, this was a rather stupid example, but
-    this is a common mistake when you perform more complicated
-    calculations on your images.
-
-5.  Convert your image to an appropriate format and compare results.
-
-
-**Tags:** exercise bitdepth-2
-
-\pagebreak
-\newpage
-
-
-## Background subtraction 
-In this example, we are exploring a common method
-to subtract background information from a time-series. In the given
-example, we have moving bacteria that were imaged with phase contrast
-microscopy. The key idea for the background subtraction is that on each
-pixel, most of the time no bacteria is visible. We therefore create an
-average image and subtract this image from the original images to
-increase contrast of moving bacteria.
-
-1.  Open the image bacteria-tracks.tif. This image was
-    create from supplementary video 1 of the publication: Rosser et
-    al. (2013) Novel Methods for Analysing Bacterial Tracks Reveal
-    Persistence in Rhodobacter sphaeroides, PLOS Computational Biology,
-    DOI: 10.1371/journal.pcbi.1003276. Please note that this was not the
-    original data, it seems that the supplementary movie was compressed!
-
-2.  Perform a Z-projection to create an average image.
-
-3.  Use `[Process > Image Calculator...]` to subtract the average image
-    from each image in the original time-series and display the
-    difference in a new window.
-
-4.  Do you see any differences?
-
-Not surprisingly, the authors of the original publication used exactly
-this approach as the first step in their image processing.
-
-**Tags:** exercise bg-subtracion-2
-
-\pagebreak
-\newpage
-
-
 ## Math on Masks 
+[//]: # (Ex2.7 formerly 2.12)
 Before, we used the ROI Manager XOR function to obtain the
 cytoplasm ROI. We can obtain the same result using image masks and image
 calculations (actually this is likely happening behind the scenes
@@ -1116,6 +1054,14 @@ anyway!).
 8.  Using `[Edit > Create Selection]`, you can create a selection from
     the mask.
 
+9. (Optional)
+To further investigate how you can work with ROIs you can go through an Image J Marco provided by Romain Guiet at EPFL. This code has been provided for a massive open online course (MOOC) for Image Processing and Analysis for Life Scientists.
+https://www.edx.org/course/image-processing-and-analysis-for-life-scientists
+
+The macro is an attachement to the image hela-cells.tif on OMERO. Select the imagen and find the attachement section in the right pane of Omero.web. Click the on file name region_of_interests.ijm to download the macro. Drag and Drop the macro file onto the FIJI main window. You can also open the file under File – Open…
+A new window with the script will show up. Click on “Run” to run through the code and follow the instructions.
+This will open a new empty image and you are asked to draw a large and a small partly overlapping ROI. In the end you get a stack with 5 different channels called “User Drawing” as well as a combination of calculated ROIs in the ROI Manager. Go through the stack and explore the calculated ROIs. Also observe the calculated areas of the ROIs in the Results table to find out the math behind the calculations.
+
 **Tags:** exercise mask-1
 
 \pagebreak
@@ -1123,10 +1069,121 @@ anyway!).
 
 
 
+## Using the ROI Manager 
+[//]: # (Ex2.8 formerly 2.7)
+Now, we are going to combine ROIs (and the ROI
+Manager) with measurements -- you will see how powerful this already
+gets!
 
+1.  Open the image hela-cells.tif. Check the import ROIs option in the Bioformats options window or open the ROI Manager
+    and load the previously generated ROI data. Do you have problems ir restoring the Cytoplams ROI from OMERO? This is due to incompabilities in FIJI's and OMERO's ROI model. You can either recreate the cytoplasm ROI by an XOR operation on the nucleus and the cytoplasm rois or open the Rois from the zip-file you saved to disk.
+
+2.  Measure the area and average intensity of the whole cell, the
+    nucleus and the cytoplasm in the green channel and compare the
+    results.
+
+![Results window](fig/results-window.png){#fig:results-window width="65%"}   
+
+3.  Create a ROI in the background of the image (no cell), select the
+    green channel and measure the average intensity again. Name the ROI
+    'Background' and update the saved ROI file; we will need this for
+    further measurements.
+
+
+**Tags:** exercise roi-manager-2
+
+\pagebreak
+\newpage
+
+[//]: #(former exercise 2.8 went to part 1)
+## Subtracting background levels 
+[//]: #(Ex2.9)
+A common task is the subtraction of the
+background levels of our images to make them comparable (background
+levels might vary). Subtracting a constant is the most basic background
+subtraction possible.
+
+1.  Open the image hela-cells.tif and again check the load ROIs option to get your previously defined ROIs into the ROI manager.
+
+2.  Measure the average intensity in the background and note the value. Open the image histogram (shortcut:``Ctrl+H``).
+
+3.  Select the overall image `[Edit > Selection > Select All]` in the
+    green channel.
+
+4.  Subtract the average background level from the green channel, using
+    `[Process > Math > Subtract]`. Check the histogram again. Did it change? You can also measure the backgrounds
+    of the other color channels and subtract those as well.
+
+**Tags:** exercise bg-subtraction-1
+
+\pagebreak
+\newpage
+
+
+## Bit-depth/Format Problems 
+[//]: #(Ex2.10)
+A common task is t
+Performing arithmetic operation changes the pixel values. This can potentially lead to e.g. clipped values. So where indicated care must be taken to convert images to a suitable bitdepth.
+
+1.  Open the image hela-cells.tif. Duplicate the green
+    channel.
+
+2.  Open the histogram of the green channel.
+
+3.  Now, multiply the image by 2.5 - this increases the brightness of the image. Check in the histogram window: was the shape of the histogram affected, how about the mean value?
+
+4.  Generate the histogram again and compare the number of saturated
+    values. As you can see, if we get a value outside the image bit-depth the value will be clipped (i.e. set to the maximum value possible). If the result is a real
+    number but our format only allows whole numbers, the resulting value is rounded. Of course, this was a rather stupid example, but
+    this is a common mistake when you perform more complicated
+    calculations on your images.
+
+5.  Convert your image to an appropriate format and compare results.
+
+
+**Tags:** exercise bitdepth-2
+
+\pagebreak
+\newpage
+
+
+## Background subtraction 
+[//]: #(Ex2.11)
+In this example, we are exploring a common method
+to subtract background information from a time-series. In the given
+example, we have moving bacteria that were imaged with phase contrast
+microscopy. The key idea for the background subtraction is that on each
+pixel, most of the time no bacteria is visible. We therefore create an
+average image and subtract this image from the original images to
+increase contrast of moving bacteria.
+
+1.  Open the image bacteria-tracks.tif. This image was
+    create from supplementary video 1 of the publication: Rosser et
+    al. (2013) Novel Methods for Analysing Bacterial Tracks Reveal
+    Persistence in Rhodobacter sphaeroides, PLOS Computational Biology,
+    DOI: 10.1371/journal.pcbi.1003276. Please note that this was not the
+    original data, it seems that the supplementary movie was compressed!
+
+2.  Perform a Z-projection to create an average image. Think about why the average projection is most useful in this case. What happens if you use the max or sum projection instead. Can you imagine a situation which makes another projection method advantageous?
+
+3.  Use `[Process > Image Calculator...]` to subtract the average image
+    from each image in the original time-series and display the
+    difference in a new window.
+
+4.  Do you see any differences?
+
+Not surprisingly, the authors of the original publication used exactly
+this approach as the first step in their image processing.
+
+[//]: #(Add exercise Epfl macro bg subtraction by min-projection - minprojection-usecase.ijm)
+**Tags:** exercise bg-subtracion-2
+
+\pagebreak
+\newpage
 
 
 ## Background subtraction and batch processing 
+[//]: #(Ex2.12 formerly 2.13)
 To make this exercise more
 interesting, we first establish the method we want to use and then apply
 it to many files automatically. If a certain task is performed multiple
@@ -1138,21 +1195,8 @@ times, it is called *batch processing*.
     example to illustrate uneven illumination and how to improve the
     image with background subtraction.
 
-2.  At first, we explore a method to subtract the background. For this,
-    we first perform a Gaussian blur on a duplicate image with a large
-    $\sigma$ of $20$. This creates a very blurry image that already
-    shows that we picked up the uneven illumination. You can look at a
-    line profile in the original and the blurred image.
-
-3.  Now we subtract the original image from the blurred image. Adjust
-    brightness/contrast to confirm that background was subtracted. As
-    the Gaussian blur is a low pass-filter, the subtraction of this
-    low pass image can be considered as a (pseudo) high pass filtering.
-
-4.  Fortunately, Fiji already has a function embedded that performs a
-    similar operation for background subtraction, called a rolling ball
-    background subtraction (Same idea: somehow calculate an average for
-    every pixel. However, the actual calculations differ).
+2.  For background subtraction FIJI provides a simple but frequently useful function called rolling ball
+    background subtraction .
 
 5.  We now want to perform the background subtraction on all image files
     in a certain folder. For this, we *record* our actions and then use
@@ -1161,36 +1205,29 @@ times, it is called *batch processing*.
 6.  Close all images except the original xu2015-adipocytes.tif.
 
 7.  To start the recording, perform `[Plugins > Macros > Record...]`. A
-    Recorder window pops up (Fig.
-    [\[fig:recorder-dialog\]](#fig:recorder-dialog){reference-type="ref"
-    reference="fig:recorder-dialog"}). Make sure that 'Macro' is
+    Recorder window pops up. Make sure that 'Macro' is
     selected in Record and nothing else.
 
-    [\[fig:recorder-dialog\]]{#fig:recorder-dialog
-    label="fig:recorder-dialog"}
+    ![Recorder dialog](fig/recorder-dialog.png){#fig:recorder-dialog width="65%"} 
 
 8.  Do `[Process > Subtract Background...]`, set the rolling ball radius
-    to $20$ (Fig.
-    [\[fig:rollingball-dialog\]](#fig:rollingball-dialog){reference-type="ref"
-    reference="fig:rollingball-dialog"}). After you clicked on 'ok', the
+    to $20$. After you clicked on 'ok', the
     operation gets performed and the recorder should show following
     line: `run("Subtract Background...", "rolling=20");`.
 
-    [\[fig:rollingball-dialog\]]{#fig:rollingball-dialog
-    label="fig:rollingball-dialog"}
+    ![Background subtraction dialog](fig/rollingball-dialog.png){#fig:rollingball-dialog width="25%"}
 
 9.  Select the line and copy (Ctrl+C). Go to
     `[Process > Batch > Macro...]`. In the batch processing window,
-    select the input folder /batch-files (please download from sciebo or OMERO). This folder
+    select the input folder /batch-files (please download from OMERO it is attached as a zip-file to xu2015-adipocytes.tif). This folder
     contains 5 identical adipocyte images with different names. Also,
     choose an output folder, make sure that this output folder exists.
-    Paste the line of code into the window (Fig.
-    [\[fig:batch-process-dialog\]](#fig:batch-process-dialog){reference-type="ref"
-    reference="fig:batch-process-dialog"}). and click on 'Process'.
+    Paste the line of code into the batch window and click on 'Process'.
     Check the chosen output folder for the results.
 
-    [\[fig:batch-process-dialog\]]{#fig:batch-process-dialog
-    label="fig:batch-process-dialog"}
+    ![Batch process dialog](fig/batch-process-dialog.png){#fig:batch-process-dialog width="80%"}
+    
+
 
 When you try to perform a batch processing where a function requires
 explicit file names the batch processor will fail because it does not
@@ -1205,10 +1242,10 @@ create a macro where individual file names get replaced.
 \newpage
 
 ## Working with Image Filters 
-
+[//]: #(Ex2.13 formerly 2.14)
 
 1.  Generate an 8-bit, 5x5 pixel black image with a white vertical line
-    as shown in the convolution example. Duplicate and zoom in to
+    as shown in the convolution example. You can create a new empty image via ``[File>New]`` (shortcut:``Ctrl+N``) and draw a line e.g. with the color picker tool and the pencil tool from the toolbar. Duplicate (shortcut:``Ctrl+Shift+D``) and zoom in to
     observe individual pixels and check whether the intensity values of
     the black pixels are zero and the values of the white pixels
     are 255.
@@ -1251,7 +1288,7 @@ create a macro where individual file names get replaced.
 
 
 ## The point spread function (PSF)
-
+[//]: #(Ex2.14 formerly 2.15)
 The image you obtain with a microscope is blurred by the optics of the
 microscope itself. The point spread function describes the impulse
 response of the microscope, i.e. the 3D diffraction pattern resulting
@@ -1278,7 +1315,7 @@ a measured PSF.
     8 bit, x/y slice through a 3D PSF taken at the center (focal plane).
 
 2.  Convolve the groundtruth image with the PSF by loading the file
-    PSF-LeicaSP8-63x-Ar488.txt (the file is available on sciebo or as an attachment to the PSF image on OMERO) in the convolver dialog.
+    PSF-LeicaSP8-63x-Ar488.txt (the file is available as an attachment to the PSF image on OMERO) in the convolver dialog.
 
 3.  Compare the groundtruth image with the convolved image. This is what
     happens every time you take an image with the microscope! (Although
@@ -1291,9 +1328,9 @@ a measured PSF.
 
 
 ## Averaging pixels
-
+[//]: #(Ex2.15 formerly 2.16)
 1.  Open the image microtubuli.tif. Zoom into the image
-    and observe the fluorescence fluctuations along the microtubuli.
+    and observe the fluorescence fluctuations along the microtubuli. You can apply a LUT such as fire to make enhance visibility.
 
 2.  Preview the smoothing filter with a kernel size of 3x3 (see above),
     using `[Process > Filters > Convolve...]`. Then increase the kernel
@@ -1313,7 +1350,7 @@ a measured PSF.
     fluctuations.
 
 4.  To show the effect of the filter more directly, you can subtract the
-    smoothed from the original image.
+    smoothed from the original image using the subtract operation in the image calculator  `[Process > Image Calculator...]` .
 
 **Tags:** exercise filter-3
 
@@ -1322,20 +1359,36 @@ a measured PSF.
 
 
 ## Gradient Filters
-
+[//]: #(Ex2.16 formerly 2.17)
 1.  Open the image microtubuli.tif. Zoom into the image
     and observe the fluorescence fluctuations along the microtubuli.
     Remember to duplicate the images before testing any processing.
 
 2.  At first, test the sharpen filter with `[Process > Sharpen]` and
     optionally using the kernel in the convolution dialog.
-
+ $$\begin{array}{|c|c|c|}
+        \hline
+        -1&-1&-1\\
+    \hline
+    -1&12&-1\\
+    \hline
+    -1&-1&-1\\
+    \hline
+        \end{array}$$
 3.  The find edge filter can be tested directly using
     `[Process > Find Edges]`. If you want to explore the filter a bit
     more, you can also generate both filtered images, convert those to
     32 bit and perform the calculations by yourself. Are the results
-    identical?
-
+    identical? Kernel for vertical edge detection: 
+ $$\begin{array}{|c|c|c|}
+        \hline
+        1&0&-1\\
+    \hline
+    2&0&-2\\
+    \hline
+    1&0&-1\\
+    \hline
+        \end{array}$$
 4.  What happens to the noise if you use the sharpen filter?
 
 5.  What happens if you first use a smoothing filter and then the edge
@@ -1348,7 +1401,7 @@ a measured PSF.
 
 
 ## Gaussian Filters
-
+[//]: #(Ex2.17 formerly 2.18)
 1.  Open the image microtubuli.tif. Zoom into the image
     and observe the fluorescence fluctuations along the microtubuli.
     Remember to duplicate the images before testing any processing.
@@ -1358,7 +1411,7 @@ a measured PSF.
 
 3.  Try to find an optimal value for $\sigma$.
 
-4.  Implement a DoG filter with $\sigma$ values of $1$ and $10$.
+4.  Use the imgage calculator (subtract) to emulate a difference of Gaussians (DoG) filter with $\sigma$ values of $1$ and $10$.
 
 **Tags:** exercise filter-5
 
@@ -1367,7 +1420,7 @@ a measured PSF.
 
 
 ## Median Filter
-
+[//]: #(Ex2.18 formerly 2.19)
 1.  Open the image microtubuli.tif. Before we do any
     further processing, we add some Salt-and-Pepper noise using
     `[Process > Noise > Salt and Pepper]`. This sets random pixels to
@@ -1388,13 +1441,11 @@ a measured PSF.
 \newpage
 
 
-
-
 ## Thresholding with contrast adjustment 
-Let us first have a look at the
-effects of thresholding using brightness/contrast adjustments.
+[//]: #(Ex2.19 formerly 2.20)
+Here we try to manually threshold by converting an 8bit image into a binary image. 
 
-1.  Open the image cell-colony.tif Open the
+1.  Open the image cell-colony.tif. Open the
     brightness/contrast adjustment window. Observe the slope of the line
     that shows the change in (displayed) intensity between the minimum
     and maximum pixel values in the histogram.
@@ -1419,6 +1470,7 @@ effects of thresholding using brightness/contrast adjustments.
 
 
 ## Manual thresholding 
+[//]: #(Ex2.20 formerly 2.21)
 Instead of adjusting the contrast, Fiji has a
 specialized function to adjust the threshold
 `[Image > Adjust > Threshold...]`.
@@ -1444,19 +1496,21 @@ specialized function to adjust the threshold
     found an optimal threshold. How difficult is it to obtain an optimal
     threshold, i.e. how sensitive is the result to your chosen value?
 
+4.  What happens if you apply the Threshold? Note especially the changes in intensity in the resulting image.
+
 **Tags:** exercise threshold-1
 
 \pagebreak
 \newpage
 
 ## Automated thresholding
-
+c
 1.  Open the image hela-cells.tif. In this task, we first
     want to automatically identify the nuclei. Select the appropriate
     channel and duplicate.
 
-2.  Test all available thresholding methods. You can see that most
-    method already produce very nice results.
+2.  Test all available thresholding methods. `[Image > Adjust > Auto Threshold...]`, set method to 'Try all'. You can see that most
+    method already produce nice results. Please also try the 'Check Thresholds' function from the BioVoxxel toolbox. Click on the most right button (right pointing double arrow) in the toolbar and select the biovoxxel toolset. Then select the Threshold check via the new toolbar icon (green cube).
 
 3.  In the next step, we want to identify the lysosomes (red). Try to
     threshold the appropriate channel with Otsu's method. Are the
@@ -1485,19 +1539,19 @@ specialized function to adjust the threshold
 \newpage
 
 ## Morphological operations
-
+[//]: #(Ex2.22 formerly 2.23)
 1.  Open the image thresholded-nuclei.tif. This image
     shows real thresholded nuclei with artificially introduced
     thresholding errors.
 
-2.  Perform erosion, dilation, opening and closing in
+2.  Duplicate the image and perform erosion, dilation, opening and closing in
     `[Process > Binary]` and observe the changes of individual nuclei.
     Make sure you understand where the different operations enhance the
     image and where they make analysis more difficult.
 
 3.  Instead of using opening or closing, try to manually erode 4-5 times
     and then dilate 4-5 times again; perform the same operations
-    reversed.
+    reversed. Note that you can do the same but more conviniently via the Biovoxxel 'EDM Binary Operations' dialog. This you can open from the Biovoxxel toolset (green cube icon in the toolbar). Here you just set the number of iterations before starting the morphological operation.
 
 4.  Try the command `[Process > Binary > Fill Holes]`. This operation
     finds background areas that are completely surrounded by foreground
@@ -1509,8 +1563,23 @@ specialized function to adjust the threshold
 \newpage
 
 
-## Skeleton analysis
+## Watershed transform
+[//]: #(Ex2.23 formerly 2.25)
+1.  Open the image bunch-of-nuclei.tif. Use the
+    gauss-filter and thresholding to generate a binary image with the
+    nuclei detected. Duplicate.
 
+2.  Use `[Process > Binary > Watershed]` on the binary image. Observe
+    where the algorithm splits objects.
+    
+3.  What can be done to improve the separation results? Try for instance different binary operations before the watershed transform.
+
+**Tags:** exercise watershed-1
+ss
+\pagebreak
+\newpage
+## Skeleton analysis
+[//]: #(Ex2.24)
 1.  Open the image drosophila-ddac-neuron.tif. In this
     task, you are going to analyze the arborization pattern of this,
     already thresholded, neuron.
@@ -1522,8 +1591,8 @@ specialized function to adjust the threshold
     yellow, magenta or any other light color.
 
 3.  Look at the original thresholded image and add the skeletonized
-    image as an overlay (with zero transparent). Analyze the
-    skeletonization results with the overlay.
+    image as an overlay (with zero transparent) `[Image > Overlay > Add Image]`. Compare the
+    skeletonization results with the original using the overlay.
 
 4.  Perform `[Analyze > Skeleton > Analyze Skeleton (2D/3D)]` on the
     skeletonized image. The Analyze Skeleton window allows you to prune
@@ -1545,23 +1614,10 @@ specialized function to adjust the threshold
 \newpage
 
 
-## Watershed transform
-
-1.  Open the image bunch-of-nuclei.tif. Use the
-    gauss-filter and thresholding to generate a binary image with the
-    nuclei detected. Duplicate.
-
-2.  Use `[Process > Binary > Watershed]` on the binary image. Observe
-    where the algorithm splits objects.
-
-**Tags:** exercise watershed-1
-
-\pagebreak
-\newpage
 
 
 ## Analyze Particles
-
+[//]: #(Ex2.25 formery 2.26)
 1.  Open the image bunch-of-nuclei.tif and use a sequence
     of filtering, thresholding and binary operations to identify the
     nuclei. Remember that this image does not provide an easy perfect
@@ -1601,7 +1657,7 @@ specialized function to adjust the threshold
 
 
 ## Trainable Weka Segmentation
-
+[//]: #(Ex3.1)
 1.  Open the image 1546 Ctr3G-KO1R 24h.lif, which was kindly provided by Matthias Rübsam. It shows a mixture of two different populations of primary ceratinocytes labelled with green and red fluorescent markers. The nuclei are stained with a Hoechst dye. Select a rectangular ROI which includes about 20-30 nuclei and duplicate the blue channel. Save the image as segmentation-challenge.tif.
 
 2. Manually count the nuclei in the image using the Multi-point tool. Exclude nuclei which touch the border.
@@ -1613,11 +1669,11 @@ specialized function to adjust the threshold
 ![Trainable WEKA segmentation](fig/weka-segmentation-window.png){#fig:weka-segmentation-window width="65%"}   
 
 
-3.  Use the freehand line tool and draw on an image object you want to
+5.  Use the freehand line tool and draw on an image object you want to
     detect. Add this selection to class 1. Repeat this step and then add
     two background selections to class 2.
 
-4.  Click on 'Train classifier'. You should now see what the method
+6.  Click on 'Train classifier'. You should now see what the method
     thinks is background and foreground. If you click on 'Create result'
     a two color image is generated. Convert this image into a
     binary image, perform a watershed operation and count nuclei again.
@@ -1625,7 +1681,7 @@ specialized function to adjust the threshold
 **Tags:** exercise weka-1
 
 ## StarDist Segmentation
-
+[//]: #(Ex3.2)
 1.   Go to `[Help > Update]`, then click ¨Manage update sites¨. Check the sites CSBDeep and StarDist. Click the ¨Close¨ button and ¨Apply changes¨. It may take a while to download. After it finished please restart FIJI.
 
 2. Open segmentation-challenge.tif and open StarDist segmentation via the menu `[Plugins > Stardist > StarDist 2D]`, keep the default settings and run stardist by clicking the ¨OK¨ button.
@@ -1637,3 +1693,38 @@ specialized function to adjust the threshold
 5. Refer to https://imagej.net/StarDist for further information. Be aware that you are employing a pre-trained model here which may well be not applicable to your data and produce non-sense results. However, if you have labelled training data your can train you Stardist model perfectly adapted to your data.
 
 **Tags:** exercise stardist
+
+## Deep ImageJ
+[//]: #(Ex3.3)
+1.  Click on Help > Update…
+In the ImageJ Updater Window that will automatically open, click on Manage update sites. Look for DeepImageJ and StarDist and check them. Click the “Close” button and “Apply Changes”. Restart FIJI after the update. 
+
+2.	Go to the BioImage Model Zoo (https://bioimage.io/) and explore the different resources (Models, Applications, Datasets). You can use the search bar to filter for different analysis tasks or image modalites (e.g. brightfield). If you chose a model, see that there is a lot of information available (author and description of models…)
+
+3.	In this case we want to use an already existing pre trained model to segment cells in brightfield microscopy images. You can download the model “T cell nuclei segmentation – brightfield” from the Model Zoo to use for deepImageJ segmentation. FIND THIS MODEL FILE ALSO ON OMERO.
+
+4.	First we have to install the model: Run DeepImageJ – DeepImageJ Install Model
+Select “Private Model”, Select “From ZIP file” and choose the path to the downloaded T cell nuclei segmentaion.zip file. 
+For Mac users: Go to the lower bar in your folder and right click on the file. Then choose “copy as file path”.
+Please read the warning note and if you accept with it, check it, so it allows you to install the model. Click “Install” and close the window afterwards.
+
+ ![DeepImageJ](fig/deepIJ.png){#fig:deepIJ width="65%"}  
+
+5.	Open the example image “Tcell.tif” in FIJI
+
+6.	Now we want to use the installed model for segmentation.
+Run: Plugins - DeepImageJ – DeepImageJ Run
+Select the “T cell nuclei brightfield” model and leave all other settings at default. 
+Click “OK” and wait for the model to segment your nuclei. This might take some seconds.
+![DeepImageJ Run](fig/deepIJ2.png){#fig:deepIJ2 width="65%"}  
+ 
+7.	As a result you will get a label image and the corresponding ROIs in the ROI manager.
+
+![Original and result image from DeepImageJ](fig/deepIJ-result.png){#fig:deepIJ-result width="95%"}   
+
+8.	Now lets try to process a new image with the same model. 
+Open the flow_chamber.tif image. Is the segmentation equally successful? What could be the source of error?
+
+9.	And what about fluorescently labelled nuclei? Try to process the image breast_cancer.tif with the same model. What could be the source of error in that case?
+
+**Tags:** exercise deeplearning
