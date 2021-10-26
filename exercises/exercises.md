@@ -1177,9 +1177,7 @@ this approach as the first step in their image processing.
 
 5.  To learn another example of removing background signal from image series by clever use of projections (here a minimum projection), you can run a macro by Olivier Burri (EPFL). This code has been provided for a massive open online course (MOOC) for Image Processing and Analysis for Life Scientists.
 https://www.edx.org/course/image-processing-and-analysis-for-life-scientists
-
 The macro file min_projection_usecase.ijm is attached to the image ASMIT Raw Data Sample.tif on OMERO. Open the image in FIJI, download and open the macro, i.e. drag and drop the ijm-file on FIJI. 
-
 A new macro-editor window with the script will show up. Click on “Run” and follow the instructions. 
 
 
