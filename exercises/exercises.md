@@ -136,6 +136,7 @@ you discuss why contrast enhancement might be considered fraud?
 
 2.  Adjust Contrast and Brightness and compare images. What is the
     problem with the contrast-enhanced image?
+
 ![Contrast problem](fig/contrast-problem.png){#fig:contrast-problem width="65%"}   
 
 [//]: # (discussion whats the problem? - overestimation of bands)
@@ -817,7 +818,7 @@ After stacking the images together, you will be able to move through the individ
 
 8.  Copy and paste the image five times. Arrange them into two row of
     three images. After roughly moving the images in place, select them
-    all and use the**Align to Grid** button in the menu bar for quick
+    all and use the **Align to Grid** button in the menu bar for quick
     alignment.
 
 9.  Select the second image in the first row. Switch to the Preview tab
@@ -1170,10 +1171,18 @@ increase contrast of moving bacteria.
     from each image in the original time-series and display the
     difference in a new window.
 
-4.  Do you see any differences?
-
-Not surprisingly, the authors of the original publication used exactly
+4.  Do you see any differences? Not surprisingly, the authors of the original publication used exactly
 this approach as the first step in their image processing.
+
+
+5.  To learn another example of removing background signal from image series by clever use of projections (here a minimum projection), you can run a macro by Olivier Burri (EPFL). This code has been provided for a massive open online course (MOOC) for Image Processing and Analysis for Life Scientists.
+https://www.edx.org/course/image-processing-and-analysis-for-life-scientists
+
+The macro file min_projection_usecase.ijm is attached to the image ASMIT Raw Data Sample.tif on OMERO. Open the image in FIJI, download and open the macro, i.e. drag and drop the ijm-file on FIJI. 
+
+A new macro-editor window with the script will show up. Click on “Run” and follow the instructions. 
+
+
 
 [//]: #(Add exercise Epfl macro bg subtraction by min-projection - minprojection-usecase.ijm)
 **Tags:** exercise bg-subtracion-2
@@ -1575,11 +1584,14 @@ c
 3.  What can be done to improve the separation results? Try for instance different binary operations before the watershed transform.
 
 **Tags:** exercise watershed-1
-ss
+
 \pagebreak
 \newpage
+
 ## Skeleton analysis
+
 [//]: #(Ex2.24)
+
 1.  Open the image drosophila-ddac-neuron.tif. In this
     task, you are going to analyze the arborization pattern of this,
     already thresholded, neuron.
