@@ -45,7 +45,7 @@ Fiji.
 [//]: # (Ex1.2)
 Now let’s try to utilize OMERO and load the image file sted-confocal.lif into the Omero database:
 
-1. Start the Omero.insight software. Open the config window by clicking the little wrench and enter the server address omero-1.cecad.uni-koeln.de. Enter your credentials an connect to Omero.
+1. Start the Omero.insight software. Open the config window by clicking the little wrench and enter the server address omero-1.cecad.uni-koeln.de. Enter your credentials and connect to Omero.
 
 2. Unfold the Display Groups dropdown menu in the toolbar and tick the All Members checkbox in the course group.
 
@@ -86,7 +86,7 @@ microscopy data: a scale bar that indicates the size of each pixel.
 
 4.  Let's add a scale bar now. Use `[Analyze > Tools > Scale Bar]`.
     Similar to the calibration bar, the dialog lets you adjust various
-    visual parameters .
+    visual parameters.
 
 5.  In FIJI you can immediately recognize whether an image contains scaling information. Take a look at the subtitle line of an image window! The default way to access this scaling information is via the image properties dialog (press ``Ctrl+Shift+P`` to open). 
 
@@ -104,8 +104,8 @@ microscopy data: a scale bar that indicates the size of each pixel.
 
 2.  You should note that the image looks rather dark. Fortunately, Fiji
     has a way to adjust the brightness and contrast of an image without
-    altering the original data. Go to
-    `[Image > Adjust > Brightness/Contrast...]`, you should see a dialog as shown in the figure.
+    altering the original data. Go to `[Image > Adjust > Brightness/Contrast...]`, you should see a dialog as shown in the figure.
+
  ![Adjust brightness dialog](fig/adjust-brightness-dialog.png){#fig:adj-bri width="23%"}
     
 3.  Click on `[Auto]`. The image gets brighter as the maximum brightness
@@ -156,7 +156,7 @@ you discuss why contrast enhancement might be considered fraud?
     pixels to 0, tick normalize and not equalize and obtain a histogram
     afterwards.
 
-![Enhance contrast dialog](fig/enhance-contrast-dialog.png){#fig:enhance-contrast-dialog width="65%"}   
+![Enhance contrast dialog](fig/enhance-contrast-dialog.png){#fig:enhance-contrast-dialog width="35%"}   
 
 3.  Compare the histograms.
 
@@ -173,6 +173,7 @@ you discuss why contrast enhancement might be considered fraud?
     Duplicate the image with `[Image > Duplicate...]`. Choose the line
     selection tool and draw a line through one of the bright spheres in
     the image. Note that if you double-click the line tool, you could adjust the width of the line tool. Now the default of 1px is fine.
+
 ![Line ROI example](fig/line-roi-example.png){#fig:line  width="75%"}
     
 2.  In the next step, we will look at the intensity (brightness)
@@ -227,13 +228,13 @@ you discuss why contrast enhancement might be considered fraud?
     (`[Image > Adjust > Brightness/Contrast...]`).
 
 3.  Click on the start animation button left to the slider to start an
-    automatic stepping through the sections similar to a video).
+    automatic stepping through the sections similar to a video.
     Clicking on the button again, pauses the animation (button icon
     changes accordingly).
 ![Stack animation](fig/stack-animation-button.png){#fig:stanbu width="25%"}   
     
-4.  Using the stack toolbar, you can `[Start Animation]` and
-    `[Stop Animation]` as well.
+4.  Using the stack toolbar, you can `[Start Animation]` and `[Stop Animation]` as well.
+
 ![Stack animation](fig/stack-toolbar.png){#fig:statob width="85%"}   
 
 
@@ -459,8 +460,7 @@ use LUTs with more than one color.
 
 2.  Adjust Brightness/Contrast and select a LUT you like.
 
-3.  Add a calibration bar with \[Analyze \> Tools \> Calibration
-    Bar\...\]. In the dialog, choose a location, fill color, label
+3.  Add a calibration bar with `[Analyze > Tools > Calibration Bar...]`. In the dialog, choose a location, fill color, label
     color, number of labels, asf. Note that this calibration
     bar shows the brightness settings you just applied and that you
     cannot change those now.
@@ -471,8 +471,7 @@ use LUTs with more than one color.
 
 5.  Open the B&C dialog ``Ctrl+Shift+C``, click the Set button and set the maximum displayed value to 40000 (be aware that you saturate some pixels by doing so!).
 
-6.  Add the calibration bar with \[Analyze \> Tools \> Calibration
-    Bar\...\]. Set number of labels to be 5. The calibration bar should be scaled from 0 to 40000 in steps of 10000. This method will not work on 8bit images.
+6.  Add the calibration bar with `[Analyze > Tools > Calibration Bar...]`. Set number of labels to be 5. The calibration bar should be scaled from 0 to 40000 in steps of 10000. This method will not work on 8bit images.
 
 **Tags:** exercise calibrationbar-1
 
@@ -492,7 +491,7 @@ protein undergoing mitosis (Courtesy of Eric Griffis).
 
 1.  Open OMERO.insight and download all the files from the mitosis dataset (user: Peter Zentis). Do you see any problem about downloading these files using the OMERO.web client? In the OMERO.web client also try to apply an export script to the complete dataset, i.e. first select the mitosis dataset, then click on the cogwheel icon in the top menu bar and navigate to export_scripts>Batch Image Export...
 
-2.  Try to open the image by drag and drop of the folder on IJ, what is the problem?
+2.  Try to open the image by drag and drop of the folder on the FIJI main window, what is the problem?
 
 3.  Go to `[Plugins > Bio-Formats > Bio-Formats Importer]` and select
     the first image in the folder of the downloaded images.
@@ -711,7 +710,7 @@ data.
 4.  Perform a resize to 30 x 30 pixels (150% size), with no
     interpolation, and compare the result with the original figure. Use
     the `Line-Tool` to measure the width of both vertical
-    lines. 4.  You should observe that one line was not scaled (1px before and after) while the other was scaled to 150% (2px to 3px).
+    lines. You should observe that one line was not scaled (1px before and after) while the other was scaled to 150% (2px to 3px).
 
 5.  Try other values for the resizing and observe the results.
 
@@ -944,7 +943,7 @@ image if no selections exist.
 2.  Observe that `[Edit > Invert]` only affects the selected pixels.
     Undo the inversion.
 
-3. If you are uncertain what is inside and what is outside a roi, you can select any roi tool and move the cursor on the area in questions. Inside a roi the cursor will be an arrow (you could use the cursor to drag the roi around) outside a roi the cursor will be cross indicating that you could create new roi by dragging.
+3. If you are uncertain what is inside and what is outside a ROI, you can select any ROI tool and move the cursor on the area in questions. Inside a ROI the cursor will be an arrow (you could use the cursor to drag the ROI around) outside a ROI the cursor will be cross indicating that you could create new ROI by dragging.
 
 **Tags:** exercise roi-3
 
@@ -981,7 +980,7 @@ options.
     (and the ROI Manager, see below), can be ROI names. If you need the ROI coordinates
     outside Fiji, you can list the coordinates of the ROI as well.
 
-![ROI properties](fig/roi-properties.png){#fig:roi-properties width="25%"}   
+![ROI properties](fig/roi-properties.png){#fig:ROI-properties width="25%"}   
 
 **Tags:** exercise roi-4
 
@@ -998,7 +997,7 @@ options.
 3.  For the following analysis, we will only work on the bottom-most
     cell. Select the blue channel showing the nucleus. Use the ROI tools
     to create an accurate outline of the nucleus and add the selected
-    region to the ROI manager. (Use the `Add` button in the roi manager window or shortcut ``t``). Rename the ROI to 'Nucleus - Your Name'.
+    region to the ROI manager. (Use the `Add` button in the ROI manager window or shortcut ``t``). Rename the ROI to 'Nucleus - Your Name'.
 
 4.  Select the green channel showing the mitochondria. In this channel,
     we can estimate the cell outline - create the outline and add the
@@ -1059,7 +1058,7 @@ anyway!).
 To further investigate how you can work with ROIs you can go through an Image J Marco provided by Romain Guiet at EPFL. This code has been provided for a massive open online course (MOOC) for Image Processing and Analysis for Life Scientists.
 https://www.edx.org/course/image-processing-and-analysis-for-life-scientists
 
-The macro is an attachement to the image hela-cells.tif on OMERO. Select the imagen and find the attachement section in the right pane of Omero.web. Click the on file name region_of_interests.ijm to download the macro. Drag and Drop the macro file onto the FIJI main window. You can also open the file under File – Open…
+The macro is an attachement to the image hela-cells.tif on OMERO. Select the image and find the attachement section in the right pane of Omero.web. Click the on file name region_of_interests.ijm to download the macro. Drag and Drop the macro file onto the FIJI main window. You can also open the file under `[File – Open…]`
 A new window with the script will show up. Click on “Run” to run through the code and follow the instructions.
 This will open a new empty image and you are asked to draw a large and a small partly overlapping ROI. In the end you get a stack with 5 different channels called “User Drawing” as well as a combination of calculated ROIs in the ROI Manager. Go through the stack and explore the calculated ROIs. Also observe the calculated areas of the ROIs in the Results table to find out the math behind the calculations.
 
@@ -1077,7 +1076,7 @@ Manager) with measurements -- you will see how powerful this already
 gets!
 
 1.  Open the image hela-cells.tif. Check the import ROIs option in the Bioformats options window or open the ROI Manager
-    and load the previously generated ROI data. Do you have problems ir restoring the Cytoplams ROI from OMERO? This is due to incompabilities in FIJI's and OMERO's ROI model. You can either recreate the cytoplasm ROI by an XOR operation on the nucleus and the cytoplasm rois or open the Rois from the zip-file you saved to disk.
+    and load the previously generated ROI data. Do you have problems restoring the Cytoplams ROI from OMERO? This is due to incompabilities in FIJI's and OMERO's ROI model. You can either recreate the cytoplasm ROI by an XOR operation on the nucleus and the cytoplasm ROIs or open the Rois from the zip-file you saved to disk.
 
 2.  Measure the area and average intensity of the whole cell, the
     nucleus and the cytoplasm in the green channel and compare the
@@ -1123,8 +1122,7 @@ subtraction possible.
 
 ## Bit-depth/Format Problems 
 [//]: #(Ex2.10)
-A common task is t
-Performing arithmetic operation changes the pixel values. This can potentially lead to e.g. clipped values. So where indicated care must be taken to convert images to a suitable bitdepth.
+Performing arithmetic operations changes pixel values. This can potentially lead to clipped values. So where indicated care must be taken to convert images to a suitable bitdepth.
 
 1.  Open the image hela-cells.tif. Duplicate the green
     channel.
@@ -1158,8 +1156,7 @@ pixel, most of the time no bacteria is visible. We therefore create an
 average image and subtract this image from the original images to
 increase contrast of moving bacteria.
 
-1.  Open the image bacteria-tracks.tif. This image was
-    create from supplementary video 1 of the publication: Rosser et
+1.  Open the image bacteria-tracks.tif. This image was created from supplementary video 1 of the publication: Rosser et
     al. (2013) Novel Methods for Analysing Bacterial Tracks Reveal
     Persistence in Rhodobacter sphaeroides, PLOS Computational Biology,
     DOI: 10.1371/journal.pcbi.1003276. Please note that this was not the
@@ -1175,8 +1172,7 @@ increase contrast of moving bacteria.
 this approach as the first step in their image processing.
 
 
-5.  To learn another example of removing background signal from image series by clever use of projections (here a minimum projection), you can run a macro by Olivier Burri (EPFL). This code has been provided for a massive open online course (MOOC) for Image Processing and Analysis for Life Scientists.
-https://www.edx.org/course/image-processing-and-analysis-for-life-scientists
+5.  To learn another example of removing background signal from image series by clever use of projections (here a minimum projection), you can run a macro by Olivier Burri (EPFL). This code has been provided for a massive open online course (MOOC) for Image Processing and Analysis for Life Scientists (https://www.edx.org/course/image-processing-and-analysis-for-life-scientists).
 The macro file min_projection_usecase.ijm is attached to the image ASMIT Raw Data Sample.tif on OMERO. Open the image in FIJI, download and open the macro, i.e. drag and drop the ijm-file on FIJI. 
 A new macro-editor window with the script will show up. Click on “Run” and follow the instructions. 
 
@@ -1350,7 +1346,7 @@ a measured PSF.
     optional preview in the next window. A radius can be given instead
     of size in X and Y as the kernel mask is circular -- the
     neighborhood can be defined arbitrarily! Circular kernels are common
-    as pixels the outermost pixels have the same distance to the pixel
+    as the outermost pixels have the same distance to the pixel
     of interest (Circular kernels can be shown with
     `[Process > Filters > Show Circular Masks...]`). Try different radii
     to obtain the best smoothing to suppress small fluorescence
@@ -1418,7 +1414,7 @@ a measured PSF.
 
 3.  Try to find an optimal value for $\sigma$.
 
-4.  Use the imgage calculator (subtract) to emulate a difference of Gaussians (DoG) filter with $\sigma$ values of $1$ and $10$.
+4.  Use the image calculator (subtract) to emulate a difference of Gaussians (DoG) filter with $\sigma$ values of $1$ and $10$.
 
 **Tags:** exercise filter-5
 
@@ -1511,13 +1507,13 @@ specialized function to adjust the threshold
 \newpage
 
 ## Automated thresholding
-c
+
 1.  Open the image hela-cells.tif. In this task, we first
     want to automatically identify the nuclei. Select the appropriate
     channel and duplicate.
 
 2.  Test all available thresholding methods. `[Image > Adjust > Auto Threshold...]`, set method to 'Try all'. You can see that most
-    method already produce nice results. Please also try the 'Check Thresholds' function from the BioVoxxel toolbox. Click on the most right button (right pointing double arrow) in the toolbar and select the biovoxxel toolset. Then select the Threshold check via the new toolbar icon (green cube).
+    methods already produce nice results. Please also try the 'Check Thresholds' function from the BioVoxxel toolbox. Click on the most right button (right pointing double arrow) in the toolbar and select the biovoxxel toolset. Then select the Threshold check via the new toolbar icon (green cube).
 
 3.  In the next step, we want to identify the lysosomes (red). Try to
     threshold the appropriate channel with Otsu's method. Are the
@@ -1572,8 +1568,7 @@ c
 
 ## Watershed transform
 [//]: #(Ex2.23 formerly 2.25)
-1.  Open the image bunch-of-nuclei.tif. Use the
-    gauss-filter and thresholding to generate a binary image with the
+1.  Open the image bunch-of-nuclei.tif. Use a gaussian filter and thresholding to generate a binary image with the
     nuclei detected. Duplicate.
 
 2.  Use `[Process > Binary > Watershed]` on the binary image. Observe
@@ -1711,7 +1706,7 @@ In the ImageJ Updater Window that will automatically open, click on Manage updat
 
 2.	Go to the BioImage Model Zoo (https://bioimage.io/) and explore the different resources (Models, Applications, Datasets). You can use the search bar to filter for different analysis tasks or image modalites (e.g. brightfield). If you chose a model, see that there is a lot of information available (author and description of models…)
 
-3.	In this case we want to use an already existing pre trained model to segment cells in brightfield microscopy images. You can download the model “T cell nuclei segmentation – brightfield” from the Model Zoo to use for deepImageJ segmentation. FIND THIS MODEL FILE ALSO ON OMERO.
+3.	In this case we want to use an already existing pre trained model to segment cells in brightfield microscopy images. You can download the model “T cell nuclei segmentation – brightfield” from the Model Zoo to use for deepImageJ segmentation. Find this model file also on OMERO as an attachment to Tcell.tif.
 
 4.	First we have to install the model: Run DeepImageJ – DeepImageJ Install Model
 Select “Private Model”, Select “From ZIP file” and choose the path to the downloaded T cell nuclei segmentaion.zip file. 
