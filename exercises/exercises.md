@@ -509,9 +509,9 @@ protein undergoing mitosis (Courtesy of Eric Griffis).
 
 6.  The imported image shows three sliders: channel (2), z-position(5),
     time-stamps(51). Browse through the image, adjust Brightness if
-    necessary.  Note that we lost information about the
-    z-spacing, time between frames or channel colors (LUT settings). You can open the original image via `[File > Open Samples > Mitosis (26 MB, 5D stack)]` and find the missing information e.g. in the properties dialog ``Ctrl+Shift+P``. Use the properties dialog on the imported image to add the missing information. Save the the created flybrain image as Tiff and upload it to OMERO via the OMERO-Plugin.
-
+    necessary.  Save the the created flybrain image as Tiff and upload it to OMERO via the OMERO-Plugin.
+ Note that possibly incomplete information about the
+    z-spacing, time between frames or channel colors (LUT settings) is provided by the single images. In this case you have the missing information, you can use the properties dialog on the imported image to add this missing information.
 **Tags:** exercise 5d-data
 
 \pagebreak
@@ -867,7 +867,7 @@ After stacking the images together, you will be able to move through the individ
 3.  Histograms are a means to quickly get an impression of the complete intensity distribution in an image. We can show the histogram with `[Analyze > Histogram]` (Shortcut: ``Ctrl+H``). If FIJI asks whether all three channels should be diplayed, answer No. The
     histogram is then displayed in a new window. The x-axis shows the pixel value and
     the y-axis the count. Also note that the histogram refers to the channel
-    that was active when the command was called.
+    that was active when the command was called. For images of bitdepth above 8bit by default the histogram is binned to 256 bins in total. If you prefer to adjust the beginning yourself, open the histogram window via the shortcut ``Ctrl+Alt+H`` and set the minimum and maximum X values as well as the number of bins as you like (try e.g. 0-65535 and 65536 bins for a 16bit image).
 
 
 ![Histogram](fig/histogram.png){#fig:histog width="25%"}   
@@ -938,7 +938,7 @@ that defines which parts of the image are of interest.
 Operations are usually performed on the selected ROIs and on the whole
 image if no selections exist.
 
-1.  Open any image. Duplicate the image. Select any ROI you like.
+1.  Open any single channel image. Duplicate the image. Select any ROI you like.
 
 2.  Observe that `[Edit > Invert]` only affects the selected pixels.
     Undo the inversion.
@@ -1058,7 +1058,7 @@ anyway!).
 To further investigate how you can work with ROIs you can go through an Image J Marco provided by Romain Guiet at EPFL. This code has been provided for a massive open online course (MOOC) for Image Processing and Analysis for Life Scientists.
 https://www.edx.org/course/image-processing-and-analysis-for-life-scientists
 
-The macro is an attachement to the image hela-cells.tif on OMERO. Select the image and find the attachement section in the right pane of Omero.web. Click the on file name region_of_interests.ijm to download the macro. Drag and Drop the macro file onto the FIJI main window. You can also open the file under `[File – Open…]`
+The macro is an attachement to the image hela-cells.tif on OMERO. Select the image and find the attachement section in the right pane of Omero.web. Click on the file name region_of_interests.ijm to download the macro. Drag and Drop the macro file onto the FIJI main window. You can also open the file under `[File – Open…]`
 A new window with the script will show up. Click on “Run” to run through the code and follow the instructions.
 This will open a new empty image and you are asked to draw a large and a small partly overlapping ROI. In the end you get a stack with 5 different channels called “User Drawing” as well as a combination of calculated ROIs in the ROI Manager. Go through the stack and explore the calculated ROIs. Also observe the calculated areas of the ROIs in the Results table to find out the math behind the calculations.
 
