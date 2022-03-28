@@ -165,8 +165,11 @@ Fiji.
 **Tags:** exercise bioformats-1
 \pagebreak
 \newpage
+
 ## Scale Bars
+
 [//]: # (Ex2.2)
+
 Let's explore one thing you usually have to include in your
 microscopy data: a scale bar that indicates the size of each pixel.
 
