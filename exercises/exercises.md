@@ -127,17 +127,9 @@ Let us start by uploading an image file (e.g. sted-confocal.lif from the sciebo 
 14. Save the figure.
 
 **Tags:** exercise omero-figure-2
-
-## Omero.figure - Limitations
-[//]: # (Ex1.4)
-1. Please try to create figures in OMERO.figure similar to the figures created in the exercises "Manipulating Stacks - Creating a montage" and "Manipulating Stacks – Creating an Insert" in FIJI.
-
-2. Review the exercises on creating a calibration bar making z-projections and think whether it would be (easily) possible to implement them in OMERO.figure as well.
-
-**Tags:** exercise omero-figure-3
-
 \pagebreak
 \newpage
+
 
 # Part 2
 ## Using Bioformats
@@ -492,6 +484,8 @@ data is presented (typically along time or z-axis) is the montage view.
 4.  You can see how easy it is to create a custom montage view, play
     with the different options, e.g. `[Increment]`.
 
+5.  Try to create a similar figure using Omero.figure.   
+
 **Tags:** exercise montage-1
 
 \pagebreak
@@ -527,10 +521,9 @@ as an overview. How would you proceed?
 
 ![Stack inserter](fig/stack-inserter-dialog.png){#fig:stains width="25%"}  
 
-6.  Again, a very easy procedure -- explore further stack operations on
-    your own.
+6.  Try to use Omero.figure to produce a similar figure.
 
-
+7. Explore further stack operations on your own.
 **Tags:** exercise insert-1
 
 \pagebreak
@@ -667,6 +660,8 @@ use LUTs with more than one color.
 5.  Open the B&C dialog ``Ctrl+Shift+C``, click the Set button and set the maximum displayed value to 40000 (be aware that you saturate some pixels by doing so!).
 
 6.  Add the calibration bar with `[Analyze > Tools > Calibration Bar...]`. Set number of labels to be 5. The calibration bar should be scaled from 0 to 40000 in steps of 10000. This method will not work on 8bit images.
+
+7.  Is it possilbe to insert a calibration bar in Omero.figure?
 
 **Tags:** exercise calibrationbar-1
 
