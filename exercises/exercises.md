@@ -323,8 +323,7 @@ you discuss why contrast enhancement might be considered fraud?
 ![Plot profile example](fig/plot-profile-example.png){#fig:ppe width="55%"}    
 
 3.  Now, we convert the 16bit image to 8bit. First, we make sure that we
-    scale during conversion by `[Edit > Option > Conversion]`. Then, we
-    use `[Image > Type > 8-bit]` to convert the image. Make sure that
+    scale during conversion by `[Edit > Option > Conversion]`. This is the default setting, which is usually restored when FIJI is restarted. It makes FIJI scale from min-max to 0-255 when converting from 16-bit or 32-bit to 8-bit. Then, we use `[Image > Type > 8-bit]` to convert the image. Make sure that
     the line ROI is still there and perform the plot profile function
     again. A second window pops up. Compare the plot profiles of the
     8-bit and the 16-bit images. The conversion modified the brightness
@@ -524,6 +523,8 @@ as an overview. How would you proceed?
 6.  Try to use Omero.figure to produce a similar figure.
 
 7. Explore further stack operations on your own.
+
+
 **Tags:** exercise insert-1
 
 \pagebreak
@@ -776,7 +777,7 @@ into other tissue parts or vesicles moving around over time.
     image). We use a fake file to better illustrate how the color coding
     works, but you can apply it to any 3D data for further testing.
     Perform `[Image > Hyperstacks > Temporal-Color Code]` and select a
-    LUT of your choice. Due to a bug in FIJI you might get an error message. To fix replace the file Temporal-Color_Code.ijm in plugins/Scripts/Image/Hyperstacks/ with the version provided as an attachment to the fake-tracks image in Omero.
+    LUT of your choice. 
 
 ![Color code](fig/color-code-dialog.png){#fig:cocodi width="25%"}   
 
@@ -889,7 +890,7 @@ data.
 [//]: # (Ex3.1)
 One of the operations you can perform on a ROI is cropping:
 
-1.  Open any image. Duplicate the image  (Shortcut: ``Ctrl+Shift+D``) (Shortcut: ``Ctrl+Shift+X``). Select a region by a
+1.  Open any image. Duplicate the image  (Shortcut: ``Ctrl+Shift+D``). Select a region by a
     rectangular ROI. Then, perform `[Image > Crop]`  (Shortcut: ``Ctrl+Shift+X``) on the duplicate.
     Close the cropped image.
 
@@ -962,9 +963,7 @@ options.
     fits over the selection (this is the same as the crop area). Undo
     the last operation.
 
-3.  Use `[Convex Hull]`. This creates an outline of the selection, where
-    a straight line between every pair of points within the ROI is also
-    within the ROI (Definition of a convex object in Euclidean space).
+3.  Use `[Convex Hull]`, which can be thought of as a rubber band wrapped tightly around the points that define the selection. 
     This can be useful if you want to measure the extent of an object
     with an irregular shape. Undo the last operation.
 
@@ -1653,9 +1652,9 @@ specialized function to adjust the threshold
 
 ## Trainable Weka Segmentation
 [//]: #(Ex4.1)
-1.  Open the image 1546 Ctr3G-KO1R 24h.lif, which was kindly provided by Matthias Rübsam. It shows a mixture of two different populations of primary ceratinocytes labelled with green and red fluorescent markers. The nuclei are stained with a Hoechst dye. Select a rectangular ROI which includes about 20-30 nuclei and duplicate the blue channel. Save the image as segmentation-challenge.tif.
+1.  Open the image segmentation_challenge.tif from Omero. This image is a little crop from the image 1546 Ctr3G-KO1R 24h.lif, which was kindly provided by Matthias Rübsam. It shows a mixture of two different populations of primary ceratinocytes labelled with green and red fluorescent markers. The nuclei are stained with a Hoechst dye.
 
-2. Manually count the nuclei in the image using the Multi-point tool. Exclude nuclei which touch the border.
+2. Duplicate the blue channel. Manually count the nuclei in the image using the Multi-point tool. Exclude nuclei which touch the border.
 
 3. Quickly try to do a segmentation using a manual threshold and watershed operation. Count the number of nuclei using the particle analyzer (exclude on edges as well).
 
